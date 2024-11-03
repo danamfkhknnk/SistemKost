@@ -14,11 +14,8 @@
       <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="#">Kamar</a></li>
       <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="#">Testimoni</a></li>
       <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2" href="#">Kontak</a></li>
-      <li><a class=" py-2 px-3 bg-primary/40 rounded-full block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2" href="#">LOGIN</a></li>
+      <li><a class=" py-2 px-3 bg-primary/40 rounded-full block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2" href="{{ url('/login')}}">LOGIN</a></li>
     </ul>
   </nav>
- 
-
 </div>
-
 </header>
