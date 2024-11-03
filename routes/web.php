@@ -34,7 +34,7 @@ Route::middleware(['auth'])->group(function(){
 
 
     Route::get('/penyewa', [PenyewaController::class, 'index'])->middleware('userAkses:penyewa');
-
+    
 
 
 
