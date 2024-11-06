@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\KeluhanController;
+use App\Http\Controllers\PenghuniController;
 use App\Http\Controllers\PenyewaController;
 use App\Http\Controllers\SesiController;
 use App\Http\Controllers\TagihanController;
@@ -24,9 +25,18 @@ Route::middleware(['guest'])->group(function(){
 Route::middleware(['auth'])->group(function(){
     Route::get('/admin', [AdminController::class, 'index'])->middleware('userAkses:admin');
     Route::get('/admin/pengguna', [AdminController::class, 'index'])->middleware('userAkses:admin');
+
+
     Route::get('/admin/kamar', [KamarController::class, 'index'])->middleware('userAkses:admin');
-    Route::get('/admin/Tagihan', [TagihanController::class, 'index'])->middleware('userAkses:admin');
-    Route::get('/admin/Keluhan', [KeluhanController::class, 'index'])->middleware('userAkses:admin');
+    Route::get('/admin/kamar/tambah', [KamarController::class, 'tambahKamar'])->middleware('userAkses:admin');
+    Route::get('/admin/kamar/edit/id', [KamarController::class, 'editKamar'])->middleware('userAkses:admin');
+
+
+
+
+    Route::get('/admin/tagihan', [TagihanController::class, 'index'])->middleware('userAkses:admin');
+    Route::get('/admin/keluhan', [KeluhanController::class, 'index'])->middleware('userAkses:admin');
+    Route::get('/admin/penghuni', [PenghuniController::class, 'index'])->middleware('userAkses:admin');
 
 
 
@@ -34,6 +44,8 @@ Route::middleware(['auth'])->group(function(){
 
 
     Route::get('/penyewa', [PenyewaController::class, 'index'])->middleware('userAkses:penyewa');
+    Route::get('/penyewa/keluhan', [PenyewaController::class, 'keluhan'])->middleware('userAkses:penyewa');
+    Route::get('/penyewa/tagihan', [PenyewaController::class, 'tagihan'])->middleware('userAkses:penyewa');
     
 
 

@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class KeluhanController extends Controller
 {
     function index(){
-        return view('Admin.Keluhan');
+        return view('Admin.Keluhan.Keluhan');
     }
 }

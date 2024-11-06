@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class TagihanController extends Controller
+class PenghuniController extends Controller
 {
     function index(){
-        return view('Admin.Tagihan.Tagihan');
+        return view ('Admin.Penghuni.Penghuni');
     }
 }
