@@ -9,4 +9,6 @@ class KeluhanController extends Controller
     function index(){
         return view('Admin.Keluhan.Keluhan');
     }
+
+    
 }

@@ -32,11 +32,16 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/admin/kamar/edit/id', [KamarController::class, 'editKamar'])->middleware('userAkses:admin');
 
 
+    Route::get('/admin/keluhan', [KeluhanController::class, 'index'])->middleware('userAkses:admin');
+
+
 
 
     Route::get('/admin/tagihan', [TagihanController::class, 'index'])->middleware('userAkses:admin');
-    Route::get('/admin/keluhan', [KeluhanController::class, 'index'])->middleware('userAkses:admin');
+
     Route::get('/admin/penghuni', [PenghuniController::class, 'index'])->middleware('userAkses:admin');
+    Route::get('/admin/penghuni/tambah', [PenghuniController::class, 'tambahPenghuni'])->middleware('userAkses:admin');
+    Route::get('/admin/penghuni/edit/id', [PenghuniController::class, 'editPenghuni'])->middleware('userAkses:admin');
 
 
 

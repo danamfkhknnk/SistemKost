@@ -3,7 +3,7 @@
 @section('content')
 <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between">
   <div class="flex">
-      <h2 class="uppercase text-xl p-2 font-bold">Tambah Data Kamar</h2>    
+      <h2 class="uppercase text-xl p-2 font-bold">Update Data Kamar</h2>    
   </div>  
 </div>
 <form class="mx-auto pl-2">
@@ -22,7 +22,6 @@
     <label for="harga" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Harga</label>
     <input type="text" id="harga" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
   </div>
-
   <div class="relative z-0 w-full mb-5 group">
     <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
     <input type="text" id="status" placeholder="Kosong" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 " readonly disabled>
