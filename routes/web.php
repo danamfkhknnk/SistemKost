@@ -55,6 +55,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/penyewa', [PenyewaController::class, 'index'])->middleware('userAkses:penyewa');
     Route::get('/penyewa/keluhan', [PenyewaController::class, 'keluhan'])->middleware('userAkses:penyewa');
     Route::get('/penyewa/tagihan', [PenyewaController::class, 'tagihan'])->middleware('userAkses:penyewa');
+    Route::get('/penyewa/profil', [PenyewaController::class, 'profil'])->middleware('userAkses:penyewa');
     
 
 

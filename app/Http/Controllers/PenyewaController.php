@@ -15,6 +15,9 @@ class PenyewaController extends Controller
     function tagihan(){
         return view('Penyewa.Tagihan');
     }
+    function profil(){
+        return view('Penyewa.Profil');
+    }
 
     
 }
