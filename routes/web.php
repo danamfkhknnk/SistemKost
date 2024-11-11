@@ -24,7 +24,11 @@ Route::middleware(['guest'])->group(function(){
 
 Route::middleware(['auth'])->group(function(){
     Route::get('/admin', [AdminController::class, 'index'])->middleware('userAkses:admin');
+
+
     Route::get('/admin/pengguna', [AdminController::class, 'index'])->middleware('userAkses:admin');
+    Route::get('/admin/pengguna/tambah', [AdminController::class, 'tambahPengguna'])->middleware('userAkses:admin');
+    Route::get('/admin/pengguna/edit/id', [AdminController::class, 'editPengguna'])->middleware('userAkses:admin');
 
 
     Route::get('/admin/kamar', [KamarController::class, 'index'])->middleware('userAkses:admin');
