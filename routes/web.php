@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\KeluhanController;
 use App\Http\Controllers\PenghuniController;
@@ -20,20 +21,29 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Route::middleware(['guest'])->group(function(){
     Route::get('/login', [SesiController::class, 'index']);
     Route::post('/login', [SesiController::class, 'login'])->name('login');
+    Route::get('/register', [SesiController::class, 'register'])->name('register');
+    Route::post('/register', [AdminController::class, 'regis'])->name('regis');
 });
 
 Route::middleware(['auth'])->group(function(){
     Route::get('/admin', [AdminController::class, 'index'])->middleware('userAkses:admin');
 
 
-    Route::get('/admin/pengguna', [AdminController::class, 'index'])->middleware('userAkses:admin');
-    Route::get('/admin/pengguna/tambah', [AdminController::class, 'tambahPengguna'])->middleware('userAkses:admin');
-    Route::get('/admin/pengguna/edit/id', [AdminController::class, 'editPengguna'])->middleware('userAkses:admin');
+    Route::get('/publik', [HomeController::class, 'publik'])->middleware('userAkses:publik');
+
+
+
+    Route::get('/admin/pengguna', [AdminController::class, 'index'])->middleware('userAkses:admin')->name('pengguna');
+    Route::get('/admin/pengguna/tambah', [AdminController::class, 'formPengguna'])->middleware('userAkses:admin');
+    Route::post('/admin/pengguna/tambah', [AdminController::class, 'tambahPengguna'])->middleware('userAkses:admin');
+    Route::get('/admin/pengguna/{id}/edit', [AdminController::class, 'editPengguna'])->middleware('userAkses:admin');
+    Route::patch('/admin/pengguna/{id}/edit', [AdminController::class, 'updatePengguna'])->middleware('userAkses:admin');
+    Route::get('/admin/pengguna/{id}/delete', [AdminController::class, 'deletePengguna'])->middleware('userAkses:admin');
 
 
     Route::get('/admin/kamar', [KamarController::class, 'index'])->middleware('userAkses:admin');
     Route::get('/admin/kamar/tambah', [KamarController::class, 'tambahKamar'])->middleware('userAkses:admin');
-    Route::get('/admin/kamar/edit/id', [KamarController::class, 'editKamar'])->middleware('userAkses:admin');
+    Route::get('/admin/kamar/{id}/edit', [KamarController::class, 'editKamar'])->middleware('userAkses:admin');
 
 
     Route::get('/admin/keluhan', [KeluhanController::class, 'index'])->middleware('userAkses:admin');

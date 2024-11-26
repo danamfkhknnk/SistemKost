@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class SesiController extends Controller
 {
@@ -11,7 +14,14 @@ class SesiController extends Controller
         return view('Component.Login');
     }
 
-    function login(Request $request){
+    function register()
+    {
+        return view('Component.Register');
+    }
+
+
+    function login(Request $request)
+    {
         $request->validate([
             'email' => 'required',
             'password' => 'required'
@@ -30,9 +40,10 @@ class SesiController extends Controller
                 return redirect('/admin');
             } else if(Auth::user()->role == 'penyewa'){
                 return redirect('/penyewa');
-            }
+            } else if(Auth::user()->role == 'publik')
+                return redirect('/publik');
         }else{
-            return redirect('/login')->withErrors('Username dan password yang dimasukkan salah')->withInput();
+            return redirect('/login')->withErrors('Email dan password yang dimasukkan salah')->withInput();
         }
     }
 

@@ -36,6 +36,9 @@
               <th scope="col" class="px-6 py-3">
                   Alamat
               </th>
+              <th scope="col" class="px-6 py-3">
+                  Nomer Telepon
+              </th>
              
               <th scope="col" class="px-6 py-3">
                   Gambar
@@ -55,6 +58,9 @@
               </td>
               <td class="px-6 py-4">
                   Rembang
+              </td>
+              <td class="px-6 py-4">
+                  01319841094
               </td>
            
               <td class="px-6 py-4">
