@@ -60,7 +60,7 @@ class AdminController extends Controller
         $request->validate([
             'nama' => 'required|string|max:255',
             'email' => 'required|email',
-            'role' => 'required|in:publik,penghuni,admin',
+            'role' => 'required',
             'password' => 'required|string|min:8',
         ]);
 

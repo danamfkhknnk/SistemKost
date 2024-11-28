@@ -44,6 +44,9 @@
               <th scope="col" class="px-6 py-3">
                   Gambar
               </th>
+              <th scope="col" class="px-6 py-3">
+                  Status
+              </th>
 
           </tr>
       </thead>
@@ -61,8 +64,9 @@
               <td class="px-6 py-4">
                   gambarakir.jpg
               </td>
-              
-            
+              <td class="px-6 py-4">
+                  gambarakir.jpg
+              </td>
           </tr>
       </tbody>
   </table>
