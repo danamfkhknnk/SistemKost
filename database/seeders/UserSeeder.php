@@ -21,6 +21,12 @@ class UserSeeder extends Seeder
                 'password'=>bcrypt('penyewa')
             ],
             [
+                'nama'=> '1',
+                'email'=>'1@gmail.com',
+                'role'=>'penyewa',
+                'password'=>bcrypt('penyewa')
+            ],
+            [
                 'nama'=>'admin',
                 'email'=>'admin@gmail.com',
                 'role'=>'admin',

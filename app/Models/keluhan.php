@@ -10,8 +10,18 @@ class Keluhan extends Model
 {
     use HasFactory;
     
+
+    protected $fillable = [
+        'judul',
+        'keluhan',
+        'gambarbukti',
+        'status'
+    ];
+
     function user(): BelongsTo
     {
+
+
         return $this->belongsTo(User::class);
     }
 }
