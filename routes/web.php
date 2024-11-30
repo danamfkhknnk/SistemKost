@@ -44,7 +44,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/admin/kamar', [KamarController::class, 'index'])->middleware('userAkses:admin')->name('kamar');
     Route::get('/admin/kamar/tambah', [KamarController::class, 'formKamar'])->middleware('userAkses:admin');
     Route::get('preview-images', [KamarController::class, 'previewImages']);
-    Route::post('/admin/kamar/tambah', [KamarController::class, 'tambahKamar'])->middleware('userAkses:admin');
+    Route::post('/admin/kamar/tambah', [KamarController::class, 'tambahKamar'])->middleware('userAkses:admin')->name('tambahkamar');
     Route::get('/admin/kamar/{id}/edit', [KamarController::class, 'editKamar'])->middleware('userAkses:admin');
 
 

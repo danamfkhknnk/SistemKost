@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('penyewas', function (Blueprint $table) {
             $table->id(); // Kolom ID otomatis
             $table->foreignId('user_id')->constrained();
-            $table->string('nik', 20)->unique();
-            $table->string('telepon', 15);
-            $table->text('alamat');
+            $table->string('nik', 20)->unique()->nullable();
+            $table->string('telepon', 15)->nullable();
+            $table->text('alamat')->nullable();
             $table->foreignId('kamars_id')->constrained();
-            $table->date('tgglmasuk');
+            $table->date('tgglmasuk')->nullable();
             $table->date('tgglkeluar')->nullable();
-            $table->string('gambarktp'); // Lokasi gambar KTP
+            $table->string('gambarktp')->nullable(); // Lokasi gambar KTP
             
             $table->timestamps();
         });

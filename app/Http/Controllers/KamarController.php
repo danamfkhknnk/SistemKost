@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Session;
 class KamarController extends Controller
 {
     function index(){
-        return view('Admin.Kamar.Kamar');
+        $kamars=kamar::get()->all();
+
+        return view ('Admin.Kamar.Kamar', ['kamars' => $kamars]);
     }
 
 
@@ -19,27 +21,28 @@ class KamarController extends Controller
     }
 
     function tambahKamar(Request $request){
+        
          $request->validate([
             'nokamar' => 'required',
             'tipe' => 'required|in:AC,Kipas Angin',
-            'harga' => 'required',
-            
+            'harga' => 'required|max:12',
             'status' => 'required|in:tersedia,terisi',
-            'gambarkamar' => 'required',
-            'gambarkamar.*' => 'mimes:jpg,png,jpeg,gif,svg'
+            'gambarkamar' => 'required|image|mimes:jpeg,png,jpg'
         ]);
 
-        if($request->hasfile('gambarkamar'))
-         {
-            foreach($request->file('gambarkamar') as $key => $file)
-            {
-                $path = $file->store('public/gambarkamar');
-                $name = $file->getClientOriginalName();
-            }
-         }
 
-        kamar::create($request->all());
-
+        $kamar = $request->all();
+        
+        if ($image = $request->file('gambarkamar')) {
+         
+            $gambarkamar = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move(public_path('gambarkamar'), $gambarkamar);
+            $kamar['gambarkamar'] = "$gambarkamar";
+        }
+        
+        kamar::create($kamar);
+        
+        
         Session::flash('message','Tambah Data Berhasil');
 
         return redirect()->route('kamar');
