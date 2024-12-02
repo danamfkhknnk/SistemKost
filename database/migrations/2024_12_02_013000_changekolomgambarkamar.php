@@ -12,10 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('kamars', function (Blueprint $table) {
-            $table->string('harga', 12)->change();
-            
-            $table->enum('tipe', ['AC', 'Kipas Angin'])->change();
-            $table->enum('status', ['tersedia', 'terisi'])->change();
+        $table->string('gambarkamar')->change();
 
         });
     }
