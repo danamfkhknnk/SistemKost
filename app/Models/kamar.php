@@ -16,4 +16,8 @@ class kamar extends Model
         'status',
         'gambarkamar'
     ];
+
+    function penghuni(){
+        return $this->hasMany(penghuni::class);
+    }
 }

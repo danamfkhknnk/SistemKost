@@ -28,20 +28,31 @@
       <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
               <th scope="col" class="px-6 py-3">
-                  No Penghuni
+                  ID Penghuni
               </th>
               <th scope="col" class="px-6 py-3">
-                  Nama
+                    Nama
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  NIK
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Nomer Telepon
               </th>
               <th scope="col" class="px-6 py-3">
                   Alamat
               </th>
               <th scope="col" class="px-6 py-3">
-                  Nomer Telepon
+                  Kamar
               </th>
-             
               <th scope="col" class="px-6 py-3">
-                  Gambar
+                  Masuk
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Keluar
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  KTP
               </th>
               {{-- <th scope="col" class="px-6 py-3">
                   Action
@@ -49,22 +60,34 @@
           </tr>
       </thead>
       <tbody>
+        @foreach ($penghuni as $penghuni)
           <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
               <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                 1
+                 {{$penghuni->id}}
               </th>
               <td class="px-6 py-4">
-                  Doni
+                  {{$penghuni->user->nama}}
               </td>
               <td class="px-6 py-4">
-                  Rembang
+                  {{$penghuni->nik}}
               </td>
               <td class="px-6 py-4">
-                  01319841094
+                  {{$penghuni->telepon}}
               </td>
-           
               <td class="px-6 py-4">
-                  Gambardino.jpg
+                  {{$penghuni->alamat}}
+              </td>
+              <td class="px-6 py-4">
+                  {{$penghuni->kamar->nokamar}}
+              </td>
+              <td class="px-6 py-4">
+                  {{$penghuni->tgglmasuk}}
+              </td>
+              <td class="px-6 py-4">
+                  {{$penghuni->tgglkeluar}}
+              </td>
+              <td class="px-6 py-4">
+                 {{$penghuni->gambarktp}}
               </td>
               {{-- <td class="flex px-6 py-4">
                   <a href={{url('admin/penghuni/edit/id')}} class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
@@ -80,6 +103,7 @@
                   </a>
               </td> --}}
           </tr>
+          @endforeach
       </tbody>
   </table>
 </div>

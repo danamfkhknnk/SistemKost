@@ -60,7 +60,6 @@ class PenyewaController extends Controller
     }
     function profil(){
 
-        
         $user_nama = Auth::user()->nama;
         
 
