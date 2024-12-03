@@ -21,7 +21,7 @@
         <span class="font-medium">{{$message}}</span>
       </div>
     </div>
-@enderror
+    @enderror
   </div>
   <div class="relative z-0 w-full mb-5 group">
     <label for="harga" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Harga</label>

@@ -49,7 +49,9 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/admin/kamar/{id}/delete', [KamarController::class, 'deleteKamar'])->middleware('userAkses:admin');
 
 
-    Route::get('/admin/keluhan', [KeluhanController::class, 'index'])->middleware('userAkses:admin');
+    Route::get('/admin/keluhan', [KeluhanController::class, 'index'])->middleware('userAkses:admin')->name('keluhanAdmin');
+    Route::patch('/admin/keluhan/{id}/edit', [KeluhanController::class, 'statusKeluhan'])->middleware('userAkses:admin');
+    Route::get('/admin/keluhan/{id}/delete', [KeluhanController::class, 'deleteKeluhan'])->middleware('userAkses:admin');
 
 
 
@@ -66,7 +68,8 @@ Route::middleware(['auth'])->group(function(){
 
 
     Route::get('/penyewa', [PenyewaController::class, 'index'])->middleware('userAkses:penyewa');
-    Route::get('/penyewa/keluhan', [PenyewaController::class, 'keluhan'])->middleware('userAkses:penyewa');
+    Route::get('/penyewa/keluhan', [PenyewaController::class, 'formKeluhan'])->middleware('userAkses:penyewa')->name('keluhan');
+    Route::post('/penyewa/keluhan', [PenyewaController::class, 'storeKeluhan'])->middleware('userAkses:penyewa');
     Route::get('/penyewa/tagihan', [PenyewaController::class, 'tagihan'])->middleware('userAkses:penyewa');
     Route::get('/penyewa/profil', [PenyewaController::class, 'profil'])->middleware('userAkses:penyewa');
     

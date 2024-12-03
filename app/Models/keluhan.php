@@ -15,13 +15,12 @@ class Keluhan extends Model
         'judul',
         'keluhan',
         'gambarbukti',
-        'status'
+        'status',
+        'user_id'
     ];
 
     function user(): BelongsTo
     {
-
-
         return $this->belongsTo(User::class);
     }
 }

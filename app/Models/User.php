@@ -56,6 +56,10 @@ class User extends Authenticatable
     }
 
     function keluhan(){
-        return $this->hasOne(Keluhan::class);
+        return $this->hasMany(Keluhan::class);
+    }
+
+    function penghuni(){
+        return $this->hasMany(penghuni::class);
     }
 }
