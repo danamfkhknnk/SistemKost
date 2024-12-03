@@ -46,6 +46,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/admin/kamar/tambah', [KamarController::class, 'tambahKamar'])->middleware('userAkses:admin')->name('tambahkamar');
     Route::get('/admin/kamar/{id}/edit', [KamarController::class, 'editKamar'])->middleware('userAkses:admin');
     Route::put('/admin/kamar/{id}/edit', [KamarController::class, 'updateKamar'])->middleware('userAkses:admin');
+    Route::get('/admin/kamar/{id}/delete', [KamarController::class, 'deleteKamar'])->middleware('userAkses:admin');
 
 
     Route::get('/admin/keluhan', [KeluhanController::class, 'index'])->middleware('userAkses:admin');

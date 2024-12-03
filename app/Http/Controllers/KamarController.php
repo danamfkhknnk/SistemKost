@@ -66,11 +66,9 @@ class KamarController extends Controller
         $kamars = $request->only(['nokamar', 'tipe', 'harga', 'status']); // Ambil hanya field yang diperlukan
         // Temukan data kamar berdasarkan ID
         $kamar = Kamar::findOrFail($id);
-
         // Proses upload gambar
         if ($files = $request->file('gambarkamar')) {
             $uploadedImages = []; // Array untuk menyimpan nama file
-
             // Hapus gambar lama jika ada
             if ($kamar->gambarkamar) {
                 $oldImages = explode(',', $kamar->gambarkamar);
@@ -78,27 +76,38 @@ class KamarController extends Controller
                     Storage::disk('public')->delete('gambarkamar/' . $oldImage); // Hapus gambar lama
                 }
             }
-
             // Upload gambar baru
             foreach ($files as $file) {
                 $fileName = date('YmdHis') . "_" . $file->getClientOriginalName();
                 $file->move(public_path('gambarkamar'), $fileName); // Pindahkan file ke direktori yang ditentukan
                 $uploadedImages[] = $fileName; // Tambahkan nama file ke array
             }
-
             $kamars['gambarkamar'] = implode(',', $uploadedImages); // Gabungkan nama file menjadi string
         } else {
             // Jika tidak ada gambar baru, gunakan gambar lama
             $kamars['gambarkamar'] = $kamar->gambarkamar;
         }
-
         // Perbarui data kamar di database
         $kamar->update($kamars);
-
         Session::flash('message','Update Data Berhasil');
-
         return redirect()->route('kamar');
     }
 
+    public function deleteKamar($id)
+    {
+        // Find the room by ID
+        $kamar = Kamar::findOrFail($id);
+        // Delete associated images from storage
+        if ($kamar->gambarkamar) {
+            $images = explode(',', $kamar->gambarkamar);
+            foreach ($images as $image) {
+                Storage::disk('public')->delete('gambarkamar/' . $image);
+            }
+        }
+        // Delete the room from the database
+        $kamar->delete();
+        // Redirect back with a success message
+        return redirect()->route('kamar')->with('success', 'Hapus Data Berhasil!');
+    }
    
 }
