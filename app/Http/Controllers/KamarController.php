@@ -11,7 +11,6 @@ class KamarController extends Controller
 {
     function index(){
         $kamars=kamar::get()->all();
-
         
         return view ('Admin.Kamar.Kamar', ['kamars' => $kamars]);
 

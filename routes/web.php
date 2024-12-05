@@ -58,8 +58,9 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('/admin/tagihan', [TagihanController::class, 'index'])->middleware('userAkses:admin');
 
-    Route::get('/admin/penghuni', [PenghuniController::class, 'index'])->middleware('userAkses:admin');
-    Route::get('/admin/penghuni/tambah', [PenghuniController::class, 'tambahPenghuni'])->middleware('userAkses:admin');
+    Route::get('/admin/penghuni', [PenghuniController::class, 'index'])->middleware('userAkses:admin')->name('penghuni');
+    Route::get('/admin/penghuni/tambah', [PenghuniController::class, 'formPenghuni'])->middleware('userAkses:admin');
+    Route::post('/admin/penghuni/tambah', [PenghuniController::class, 'createPenghuni'])->middleware('userAkses:admin');
     Route::get('/admin/penghuni/edit/id', [PenghuniController::class, 'editPenghuni'])->middleware('userAkses:admin');
 
 

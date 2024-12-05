@@ -7,7 +7,17 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class penghuni extends Model
 {
-    //
+    protected $fillable = [
+        'user_id',
+        'nik',
+        'telepon',
+        'alamat',
+        'kamar_id',
+        'tgglmasuk',
+        'tgglkeluar',
+        'gambarktp',
+
+    ];
 
 
     function user(): BelongsTo

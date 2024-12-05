@@ -14,7 +14,7 @@
           </svg>
       </div>
       <input type="text" id="table-search" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-60 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for items">
-  </div>
+    </div>
   </div>
   <div class="flex gap-4">
     <div class="pt-2">
@@ -34,7 +34,6 @@
         </div>
         @endif
     </div>
-    
   </div>
      
    
