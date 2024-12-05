@@ -3,8 +3,9 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KamarController;
-use App\Http\Controllers\KeluhanController;
 use App\Http\Controllers\PenghuniController;
+use App\Http\Controllers\KeluhanController;
+
 use App\Http\Controllers\PenyewaController;
 use App\Http\Controllers\SesiController;
 use App\Http\Controllers\TagihanController;
@@ -61,8 +62,9 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/admin/penghuni', [PenghuniController::class, 'index'])->middleware('userAkses:admin')->name('penghuni');
     Route::get('/admin/penghuni/tambah', [PenghuniController::class, 'formPenghuni'])->middleware('userAkses:admin');
     Route::post('/admin/penghuni/tambah', [PenghuniController::class, 'createPenghuni'])->middleware('userAkses:admin');
-    Route::get('/admin/penghuni/edit/id', [PenghuniController::class, 'editPenghuni'])->middleware('userAkses:admin');
-
+    Route::get('/admin/penghuni/{id}/edit', [PenghuniController::class, 'editPenghuni'])->middleware('userAkses:admin');
+    Route::put('/admin/penghuni/{id}/edit', [PenghuniController::class, 'updatePenghuni'])->middleware('userAkses:admin');
+    Route::get('/admin/penghuni/{id}/delete', [PenghuniController::class, 'deletePenghuni'])->middleware('userAkses:admin');
 
 
 

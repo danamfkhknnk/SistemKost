@@ -19,6 +19,17 @@ class penghuni extends Model
 
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::updating(function ($penghuni) {
+            if ($penghuni->isDirty('tgglkeluar') && !is_null($penghuni->tgglkeluar)) {
+                $penghuni->kamar_id = null;
+            }
+        });
+    }
+
 
     function user(): BelongsTo
     {
