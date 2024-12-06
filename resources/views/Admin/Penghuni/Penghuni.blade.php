@@ -99,7 +99,7 @@
                   {{$penghuni->tgglkeluar ?? '-'}}
               </td>
               <td class="px-6 py-4">
-                 {{$penghuni->gambarktp}}
+                <img src="{{ asset('gambarktp/' . $penghuni->gambarktp) }}" alt="Gambar KTP" width="100px">
               </td>
               <td class="flex  px-6 py-4">
                 @if($penghuni->kamar_id)
