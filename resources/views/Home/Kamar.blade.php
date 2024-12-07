@@ -1,127 +1,65 @@
-<div class="pt-16 pb-10 container" id="paket">
+<div class="pt-14 pb-10 container" id="paket">
     <section data-aos="fade-up" class="container">
       <div class="text-center mb-4 max-w-[700px] mx-auto">
-        <h1 class="text-xl font-bold">Paket AL Qudsi</h1>
+        <h1 class="text-xl font-bold">Kamar Yang Tersedia</h1>
         <p class="pt-2 text-center text-sm">
-          Temukan paket perjalanan haji dan umrah yang sesuai dengan kebutuhan dan keinginan Anda. Kami menawarkan berbagai pilihan paket dengan layanan unggulan untuk memastikan pengalaman ibadah Anda berjalan lancar dan berkesan
+          Nikmati kenyamanan tinggal di Kost Putra Tentrem Mulyo dengan fasilitas lengkap dan harga terjangkau. Tersedia pilihan kamar standar dan eksklusif yang siap mendukung kebutuhan Anda. Hubungi kami sekarang untuk informasi lebih lanjut dan reservasi!
         </p>
       </div>
-      <div class="grid grid-flow-row-dense lg:grid-cols-3 md:grid-cols-2 gap-2">
-
-          <div class="shadow-lg bg-primary/5 transition-all duration-500 hover:shadow-xl">
-            <div class="overflow-hidden">
-                <a href={`https://wa.me/${wa}?text=Halo%20Admin%20AL-Qudsi%20Saya%20Tertarik%20Dengan%20${judul}.%20Bisa%20Infokan%20Lebih%20Lanjut.?%20`}>
-                  <img src="assets/1.jpg" alt="No image" class="mx-auto cursor-pointer object-cover transition duration-700 hover:skew-x-2 hover:scale-110 h-[100px] w-[100px]" />
-                </a>
-            </div>
-            <div class="space-y-2 p-3">
-              <h1 class="font-bold text-xl">{judul}</h1>
-              <p class="">{tanggal}</p>
-              <div class="border-t-2 border-secondary/50 py-3 !mt-3">
-                <div class="md:flex justify-between">
-                  <p class="text-2xl font-semibold">Rp{harga}</p>
-                  <a href={`https://wa.me/08231231412?text=Halo%20Admin%20AL-Qudsi%20Saya%20Tertarik%20Dengan%20${judul}.%20Bisa%20Infokan%20Lebih%20Lanjut.?%20`}>
-                    <MdOutlineShoppingCartCheckout class="h-8 w-8" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="shadow-lg bg-primary/5 transition-all duration-500 hover:shadow-xl">
-            <div class="overflow-hidden">
-                <a href={`https://wa.me/${wa}?text=Halo%20Admin%20AL-Qudsi%20Saya%20Tertarik%20Dengan%20${judul}.%20Bisa%20Infokan%20Lebih%20Lanjut.?%20`}>
-                  <img src="assets/1.jpg" alt="No image" class="mx-auto cursor-pointer object-cover transition duration-700 hover:skew-x-2 hover:scale-110 h-[100px] w-[100px]" />
-                </a>
-            </div>
-            <div class="space-y-2 p-3">
-              <h1 class="font-bold text-xl">{judul}</h1>
-              <p class="">{tanggal}</p>
-              <div class="border-t-2 border-secondary/50 py-3 !mt-3">
-                <div class="md:flex justify-between">
-                  <p class="text-2xl font-semibold">Rp{harga}</p>
-                  <a href={`https://wa.me/08231231412?text=Halo%20Admin%20AL-Qudsi%20Saya%20Tertarik%20Dengan%20${judul}.%20Bisa%20Infokan%20Lebih%20Lanjut.?%20`}>
-                    <MdOutlineShoppingCartCheckout class="h-8 w-8" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="shadow-lg bg-primary/5 transition-all duration-500 hover:shadow-xl">
-            <div class="overflow-hidden">
-                <a href={`https://wa.me/${wa}?text=Halo%20Admin%20AL-Qudsi%20Saya%20Tertarik%20Dengan%20${judul}.%20Bisa%20Infokan%20Lebih%20Lanjut.?%20`}>
-                  <img src="assets/1.jpg" alt="No image" class="mx-auto cursor-pointer object-cover transition duration-700 hover:skew-x-2 hover:scale-110 h-[100px] w-[100px]" />
-                </a>
-            </div>
-            <div class="space-y-2 p-3">
-              <h1 class="font-bold text-xl">{judul}</h1>
-              <p class="">{tanggal}</p>
-              <div class="border-t-2 border-secondary/50 py-3 !mt-3">
-                <div class="md:flex justify-between">
-                  <p class="text-2xl font-semibold">Rp{harga}</p>
-                  <a href={`https://wa.me/08231231412?text=Halo%20Admin%20AL-Qudsi%20Saya%20Tertarik%20Dengan%20${judul}.%20Bisa%20Infokan%20Lebih%20Lanjut.?%20`}>
-                    <MdOutlineShoppingCartCheckout class="h-8 w-8" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="shadow-lg bg-primary/5 transition-all duration-500 hover:shadow-xl">
-            <div class="overflow-hidden">
-                <a href={`https://wa.me/${wa}?text=Halo%20Admin%20AL-Qudsi%20Saya%20Tertarik%20Dengan%20${judul}.%20Bisa%20Infokan%20Lebih%20Lanjut.?%20`}>
-                  <img src="assets/1.jpg" alt="No image" class="mx-auto cursor-pointer object-cover transition duration-700 hover:skew-x-2 hover:scale-110 h-[100px] w-[100px]" />
-                </a>
-            </div>
-            <div class="space-y-2 p-3">
-              <h1 class="font-bold text-xl">{judul}</h1>
-              <p class="">{tanggal}</p>
-              <div class="border-t-2 border-secondary/50 py-3 !mt-3">
-                <div class="md:flex justify-between">
-                  <p class="text-2xl font-semibold">Rp{harga}</p>
-                  <a href={`https://wa.me/08231231412?text=Halo%20Admin%20AL-Qudsi%20Saya%20Tertarik%20Dengan%20${judul}.%20Bisa%20Infokan%20Lebih%20Lanjut.?%20`}>
-                    <MdOutlineShoppingCartCheckout class="h-8 w-8" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="shadow-lg bg-primary/5 transition-all duration-500 hover:shadow-xl">
-            <div class="overflow-hidden">
-                <a href={`https://wa.me/${wa}?text=Halo%20Admin%20AL-Qudsi%20Saya%20Tertarik%20Dengan%20${judul}.%20Bisa%20Infokan%20Lebih%20Lanjut.?%20`}>
-                  <img src="assets/1.jpg" alt="No image" class="mx-auto cursor-pointer object-cover transition duration-700 hover:skew-x-2 hover:scale-110 h-[100px] w-[100px]" />
-                </a>
-            </div>
-            <div class="space-y-2 p-3">
-              <h1 class="font-bold text-xl">{judul}</h1>
-              <p class="">{tanggal}</p>
-              <div class="border-t-2 border-secondary/50 py-3 !mt-3">
-                <div class="md:flex justify-between">
-                  <p class="text-2xl font-semibold">Rp{harga}</p>
-                  <a href={`https://wa.me/08231231412?text=Halo%20Admin%20AL-Qudsi%20Saya%20Tertarik%20Dengan%20${judul}.%20Bisa%20Infokan%20Lebih%20Lanjut.?%20`}>
-                    <MdOutlineShoppingCartCheckout class="h-8 w-8" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="shadow-lg bg-primary/5 transition-all duration-500 hover:shadow-xl">
-            <div class="overflow-hidden">
-                <a href={`https://wa.me/${wa}?text=Halo%20Admin%20AL-Qudsi%20Saya%20Tertarik%20Dengan%20${judul}.%20Bisa%20Infokan%20Lebih%20Lanjut.?%20`}>
-                  <img src="assets/1.jpg" alt="No image" class="mx-auto cursor-pointer object-cover transition duration-700 hover:skew-x-2 hover:scale-110 h-[100px] w-[100px]" />
-                </a>
-            </div>
-            <div class="space-y-2 p-3">
-              <h1 class="font-bold text-xl">{judul}</h1>
-              <p class="">{tanggal}</p>
-              <div class="border-t-2 border-secondary/50 py-3 !mt-3">
-                <div class="md:flex justify-between">
-                  <p class="text-2xl font-semibold">Rp{harga}</p>
-                  <a href={`https://wa.me/08231231412?text=Halo%20Admin%20AL-Qudsi%20Saya%20Tertarik%20Dengan%20${judul}.%20Bisa%20Infokan%20Lebih%20Lanjut.?%20`}>
-                    <MdOutlineShoppingCartCheckout class="h-8 w-8" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
+        <div class="bg-white rounded-lg shadow-md p-4">
+         <img class="w-full h-48 object-cover rounded-t-lg" height="200" src="https://storage.googleapis.com/a1aa/image/nWjSgvsB0nbmK1BAoDEdJb5FTkskHDem6AYXPJIotorwVM8JA.jpg" width="300"/>
+         <div class="p-4">
+          <h2 class="text-xl font-bold mb-2">
+           Room 101
+          </h2>
+          <p class="text-gray-700 mb-2">
+           Type: Deluxe King
+          </p>
+          <p class="text-gray-700 mb-2">
+           Price: $150/night
+          </p>
+          <button class="bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:bg-blue-600">
+           Reserve
+          </button>
+         </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4">
+         <img alt="Room 102 with two queen-sized beds, modern decor, and a large window with a garden view" class="w-full h-48 object-cover rounded-t-lg" height="200" src="https://storage.googleapis.com/a1aa/image/GWtfiT7sIpUtUaZxVxyMAW0nhFe7ZrL40tuOf4vC2VhFXxwnA.jpg" width="300"/>
+         <div class="p-4">
+          <h2 class="text-xl font-bold mb-2">
+           Room 102
+          </h2>
+          <p class="text-gray-700 mb-2">
+           Type: Double Queen
+          </p>
+          <p class="text-gray-700 mb-2">
+           Price: $130/night
+          </p>
+          <button class="bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:bg-blue-600">
+           Reserve
+          </button>
+         </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4">
+         <img alt="Room 103 with a single queen-sized bed, modern decor, and a large window with a pool view" class="w-full h-48 object-cover rounded-t-lg" height="200" src="https://storage.googleapis.com/a1aa/image/VNfDKojAhRy5RiTWEGkwLTqVw5Nk7qpUINebxeCeysjSuihPB.jpg" width="300"/>
+         <div class="p-4">
+          <h2 class="text-xl font-bold mb-2">
+           Room 103
+          </h2>
+          <p class="text-gray-700 mb-2">
+           Type: Single Queen
+          </p>
+          <p class="text-gray-700 mb-2">
+           Price: $120/night
+          </p>
+          <button class="bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:bg-blue-600">
+           Reserve
+          </button>
+         </div>
+        </div>
+       </div>
+  
+    
     </section>
   </div>

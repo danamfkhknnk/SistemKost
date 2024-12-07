@@ -1,51 +1,34 @@
-<div class="pt-16 container" id="tentang">
+<div class="pt-14 container">
     <section data-aos="fade-up" class="container ">
-      <h1 class="pb-2 text-xl text-center font-bold">Tentang AL Qudsi</h1>
+      <h1 class="pb-2 text-xl text-center font-bold">Tentang Kost Putra Tentrem Mulyo</h1>
       <div class="flex gap-2 justify-center flex-col text-justify pb-8">
         <h1>
-          Al Qudsi Tour & Travel adalah perusahaan yang berkomitmen untuk menyediakan layanan haji dan umrah dengan kualitas terbaik. Sejak didirikan, kami telah berdedikasi untuk membantu jutaan muslim menjalankan ibadah haji dan umrah
-          dengan nyaman dan lancar. Kami memiliki tim yang berpengalaman dan berpengetahuan luas dalam proses perjalanan haji dan umrah. Kami mengutamakan kepuasan pelanggan dan selalu berusaha keras untuk memastikan setiap detail
-          perjalanan berjalan dengan sempurna.
+          Kost Putra Tentrem Mulyo didirikan dengan tujuan memberikan solusi hunian nyaman dan terjangkau bagi para pelajar, mahasiswa, dan pekerja yang membutuhkan tempat tinggal di kawasan strategis. Terinspirasi oleh kebutuhan akan lingkungan yang aman, tenang, dan mendukung produktivitas, kost ini mulai beroperasi pada tahun 2015. Nama "Tentrem Mulyo" diambil dari filosofi Jawa yang berarti ketenangan dan kesejahteraan, mencerminkan harapan pemilik untuk menciptakan hunian yang tidak hanya menyediakan fasilitas fisik, tetapi juga suasana harmonis bagi para penghuninya.
         </h1>
         <h1>
-          Visi kami adalah menjadi mitra terpercaya dalam perjalanan haji dan umrah, menyediakan layanan yang berkualitas tinggi dan mengutamakan kepuasan pelanggan. Kami berkomitmen untuk selalu meningkatkan layanan kami dan berinovasi
-          dalam menyediakan pengalaman perjalanan yang tak terlupakan bagi para jamaah haji dan umrah. Kami mengundang Anda untuk menjelajahi layanan yang kami tawarkan dan menghubungi kami untuk informasi lebih lanjut. Terima kasih telah
-          memilih Al Qudsi Tour & Travel sebagai mitra perjalanan ibadah Anda.
+          Seiring berjalannya waktu, Kost Putra Tentrem Mulyo terus berkembang dan beradaptasi dengan kebutuhan penghuninya. Dari fasilitas dasar, kini kost ini telah dilengkapi dengan berbagai layanan modern seperti akses internet cepat, sistem keamanan 24 jam, dan area bersama untuk membangun komunitas penghuni yang erat. Melalui dedikasi terhadap kenyamanan dan pelayanan berkualitas, Kost Putra Tentrem Mulyo telah menjadi pilihan utama bagi mereka yang mencari tempat tinggal yang mendukung gaya hidup produktif dan serba praktis.
         </h1>
       </div>
-      <div class="grid grid-flow-row-dense lg:grid-cols-3 md:grid-cols-2 gap-8">
-          <div class="text-center bg-primary/5 rounded-md shadow-md hover:bg-primary hover:text-white">
-            <div class="mx-auto flex justify-content-center rounded-full text-sm font-semibold ">
-              <p class="m-auto text-white bg-primary rounded-3xl">{number}</p>
-            </div>
+      <div class="grid grid-flow-row-dense lg:grid-cols-3 md:grid-cols-2 gap-6">
+          <div class="text-center lg:h-20 h-14 bg-white rounded-md shadow-md hover:bg-primary hover:text-white">
             <p class=" font-semibold">Pengalaman dan Keahlian</p>
             <h1 class="text-sm">{desc}</h1>
           </div>
-          <div class="text-center bg-primary/5 rounded-md shadow-md hover:bg-primary hover:text-white">
-            <div class="mx-auto flex justify-content-center rounded-full text-sm font-semibold ">
-              <p class="m-auto text-white bg-primary rounded-3xl">{number}</p>
-            </div>
+          <div class="text-center bg-white/70 rounded-md shadow-md hover:bg-primary hover:text-white">
             <p class=" font-semibold">Pengalaman dan Keahlian</p>
             <h1 class="text-sm">{desc}</h1>
           </div>
-          <div class="text-center bg-primary/5 rounded-md shadow-md hover:bg-primary hover:text-white">
-            <div class="mx-auto flex justify-content-center rounded-full text-sm font-semibold ">
-              <p class="m-auto text-white bg-primary rounded-3xl">{number}</p>
-            </div>
+          <div class="text-center bg-white/70 rounded-md shadow-md hover:bg-primary hover:text-white">
+
             <p class=" font-semibold">Pengalaman dan Keahlian</p>
             <h1 class="text-sm">{desc}</h1>
           </div>
-          <div class="text-center bg-primary/5 rounded-md shadow-md hover:bg-primary hover:text-white">
-            <div class="mx-auto flex justify-content-center rounded-full text-sm font-semibold ">
-              <p class="m-auto text-white bg-primary rounded-3xl">{number}</p>
-            </div>
+          <div class="text-center bg-white/70 rounded-md shadow-md hover:bg-primary hover:text-white">
+            
             <p class=" font-semibold">Pengalaman dan Keahlian</p>
             <h1 class="text-sm">{desc}</h1>
           </div>
-          <div class="text-center bg-primary/5 rounded-md shadow-md hover:bg-primary hover:text-white">
-            <div class="mx-auto flex justify-content-center rounded-full text-sm font-semibold ">
-              <p class="m-auto text-white bg-primary rounded-3xl">{number}</p>
-            </div>
+          <div class="text-center bg-white/70 rounded-md shadow-md hover:bg-primary hover:text-white">
             <p class=" font-semibold">Pengalaman dan Keahlian</p>
             <h1 class="text-sm">{desc}</h1>
           </div>

@@ -19,19 +19,19 @@
     <div>
         @include('Home.Navbar')
     </div>
-    <div>
+    <div id="home">
         @include('Home.Hero')
     </div>
-    <div>
+    <div id="tentang" >
         @include('Home.Tentang')
     </div>
-    <div>
+    <div id="kamar">
         @include('Home.Kamar')
     </div>
-    <div >
+    <div id="testi" >
         @include('Home.Testimoni')      
     </div>
-    <div>
+    <div id="kontak">
         @include('Home.Kontak')
     </div>
 
