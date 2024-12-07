@@ -63,4 +63,7 @@ class User extends Authenticatable
     function penghuni(){
         return $this->hasMany(penghuni::class);
     }
+    function testi(){
+        return $this->hasMany(testi::class);
+    }
 }

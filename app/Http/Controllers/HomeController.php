@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Home;
+use App\Models\info;
+use App\Models\tentang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -15,51 +17,113 @@ class HomeController extends Controller
         return view('Home.Layout');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function publik()
-    {
-        return view('Publik.Dashboard');
+    public function informasi($id){
+        $info = info::findOrFail($id);
+        return view('Admin.Home.informasi',['info' => $info]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+    public function updateInformasi(Request $request, $id){
+        $request->validate([
+            'wa' => 'required|numeric',
+            'fb' => 'required|string',
+            'tt' => 'required|string',
+            'logo.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'galeri.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $info = info::findOrFail($id);
+
+        $data = $request->all();
+
+        if ($image = $request->file('logo')) {
+            $logo = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move(public_path('home'), $logo);
+            $data['logo'] = "$logo";
+        }
+
+        if ($files = $request->file('galeri')) {
+            $uploadedImages = []; // Array untuk menyimpan nama file
+            foreach ($files as $file) {
+                $fileName = date('YmdHis') . "_" . $file->getClientOriginalName();
+                $file->move(public_path('home'), $fileName);
+                $uploadedImages[] = $fileName; // Tambahkan nama file ke array
+            }
+            $data['galeri'] = implode(',', $uploadedImages);
+        }
+        $info->update($data);
+        
+        Session::flash('message', 'Update Data Berhasil');
+        
+        return redirect()->route('info', ['id' => $info->id]);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Home $home)
-    {
-        //
+
+
+    
+    public function testi(){
+        return view('Admin.Home.testi');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Home $home)
-    {
-        //
+
+    public function updatetesti(Request $request, $id){
+        $request->validate([
+            'wa' => 'required|numeric',
+            'fb' => 'required|string',
+            'tt' => 'required|string',
+            'logo.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'galeri.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $info = info::findOrFail($id);
+
+        $data = $request->all();
+
+        if ($image = $request->file('logo')) {
+            $logo = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move(public_path('home'), $logo);
+            $data['logo'] = "$logo";
+        }
+
+        if ($files = $request->file('galeri')) {
+            $uploadedImages = []; // Array untuk menyimpan nama file
+            foreach ($files as $file) {
+                $fileName = date('YmdHis') . "_" . $file->getClientOriginalName();
+                $file->move(public_path('home'), $fileName);
+                $uploadedImages[] = $fileName; // Tambahkan nama file ke array
+            }
+            $data['galeri'] = implode(',', $uploadedImages);
+        }
+        $info->update($data);
+
+       Session::flash('message', 'Update Data Berhasil');
+        
+        return redirect()->route('info');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Home $home)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Home $home)
-    {
-        //
+
+    public function tentang(){
+        $tentangs = tentang::all();
+        return view('Admin.Home.tentang', compact('tentangs'));
     }
+    
+    public function updatetentang(Request $request){
+        $request->validate([
+            'poin.*' => 'required|string', // Validasi untuk array poin
+            'desk.*' => 'required|string',  // Validasi untuk array desk
+        ]);
+    
+        foreach ($request->poin as $id => $poin) {
+            $tentang = tentang::findOrFail($id);
+            $tentang->update([
+                'poin' => $poin,
+                'desk' => $request->desk[$id],
+            ]);
+        }
+    
+        Session::flash('message', 'Update Data Berhasil');
+        
+        return redirect()->route('tentang');
+    }
+    
 }

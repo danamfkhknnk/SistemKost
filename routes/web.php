@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InfoController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\PenghuniController;
 use App\Http\Controllers\KeluhanController;
 
 use App\Http\Controllers\PenyewaController;
+use App\Http\Controllers\PublikController;
 use App\Http\Controllers\SesiController;
 use App\Http\Controllers\TagihanController;
 use Illuminate\Support\Facades\Route;
@@ -30,7 +32,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/admin', [AdminController::class, 'index'])->middleware('userAkses:admin');
 
 
-    Route::get('/publik', [HomeController::class, 'publik'])->middleware('userAkses:publik');
+    Route::get('/publik', [PublikController::class, 'publik'])->middleware('userAkses:publik');
 
 
 
@@ -65,6 +67,14 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/admin/penghuni/{id}/edit', [PenghuniController::class, 'editPenghuni'])->middleware('userAkses:admin');
     Route::put('/admin/penghuni/{id}/edit', [PenghuniController::class, 'updatePenghuni'])->middleware('userAkses:admin');
     Route::get('/admin/penghuni/{id}/delete', [PenghuniController::class, 'deletePenghuni'])->middleware('userAkses:admin');
+
+
+    Route::get('/admin/publik/informasi/{id}/edit', [HomeController::class, 'informasi'])->middleware('userAkses:admin')->name('info');
+    Route::put('/admin/publik/informasi/{id}/edit', [HomeController::class, 'updateinformasi'])->middleware('userAkses:admin');
+    Route::get('/admin/publik/testi/{id}/edit', [HomeController::class, 'testi'])->middleware('userAkses:admin')->name('testi');
+    Route::put('/admin/publik/testi/{id}/edit', [HomeController::class, 'updatetesti'])->middleware('userAkses:admin');
+    Route::get('/admin/publik/tentang', [HomeController::class, 'tentang'])->middleware('userAkses:admin')->name('tentang');
+    Route::post('/admin/publik/tentang/edit', [HomeController::class, 'updatetentang'])->middleware('userAkses:admin');
 
 
 
