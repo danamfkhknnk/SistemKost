@@ -15,7 +15,7 @@ class PenghuniController extends Controller
         return view('Admin.Penghuni.Penghuni',['penghuni'=> $penghuni]);
     }
     function formPenghuni(){
-        $users = User::whereIn('role', [User ::ROLE_PENYEWA, User::ROLE_PUBLIK])->get();
+        $users = User::whereIn('role', [User::ROLE_PUBLIK])->get();
         $kamars = kamar::where('status', 'tersedia')->get();
 
         return view('Admin.Penghuni.add', compact('users', 'kamars'));
@@ -31,6 +31,9 @@ class PenghuniController extends Controller
         $kamar = Kamar::find($request->kamar_id);
         $kamar->status = 'terisi';
         $kamar->save();
+        $role = User::find($request->user_id);
+        $role->role = 'penyewa';
+        $role->save();
         
         Session::flash('message','Tambah Data Berhasil');
 
@@ -52,11 +55,17 @@ class PenghuniController extends Controller
 
         $penghuni = Penghuni::findOrFail($id);
         $kamar = Kamar::find($penghuni->kamar_id);
+        $role = User::find($penghuni->user_id);
         $penghuni->update($request->all());
         if ($kamar) {
             $kamar->status = 'tersedia';
             $kamar->save();
         }
+        if ($role) {
+            $role->role = 'publik';
+            $role->save();
+        }
+    
 
         Session::flash('message','Update Data Berhasil');
         return redirect()->route('penghuni');
@@ -64,21 +73,23 @@ class PenghuniController extends Controller
     }
 
     function deletePenghuni(Request $request, $id){
-
          // Temukan penghuni berdasarkan ID
          $penghuni = penghuni::findOrFail($id);
-
          // Temukan kamar yang terkait dengan penghuni
          $kamar = Kamar::find($penghuni->kamar_id);
- 
+         $role = User::find($penghuni->user_id);
          // Hapus penghuni
          $penghuni->delete();
  
-         // Ubah status kamar menjadi 'tersedia'
-         if ($kamar) {
-             $kamar->status = 'tersedia';
-             $kamar->save();
-         }
+        //  // Ubah status kamar menjadi 'tersedia'
+        //  if ($kamar) {
+        //      $kamar->status = 'tersedia';
+        //      $kamar->save();
+        //  }
+        //  if ($role) {
+        //      $role->role = 'publik';
+        //      $role->save();
+        //  }
 
     
         Session::flash('message','Delete Data Berhasil');

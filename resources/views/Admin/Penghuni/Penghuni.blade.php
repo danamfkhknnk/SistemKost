@@ -81,13 +81,13 @@
                   {{$penghuni->user->nama}}
               </td>
               <td class="px-6 py-4">
-                  {{$penghuni->nik}}
+                  {{$penghuni->nik ?? '-'}}
               </td>
               <td class="px-6 py-4">
-                  {{$penghuni->telepon}}
+                  {{$penghuni->telepon ?? '-'}}
               </td>
               <td class="px-6 py-4">
-                  {{$penghuni->alamat}}
+                  {{$penghuni->alamat ?? '-'}}
               </td>
               <td class="px-6 py-4">
                   {{$penghuni->kamar->nokamar ?? 'Keluar Kost'}}
@@ -99,7 +99,11 @@
                   {{$penghuni->tgglkeluar ?? '-'}}
               </td>
               <td class="px-6 py-4">
-                <img src="{{ asset('gambarktp/' . $penghuni->gambarktp) }}" alt="Gambar KTP" width="100px">
+                @if ($penghuni->gambarktp)
+                    <img src="{{ asset('gambarktp/' . $penghuni->gambarktp) }}" alt="Gambar KTP" width="100px">
+                @else
+                   <p>-</p> 
+                @endif
               </td>
               <td class="flex  px-6 py-4">
                 @if($penghuni->kamar_id)
