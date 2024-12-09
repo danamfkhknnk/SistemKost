@@ -11,12 +11,10 @@
 <body class="bg-secondary">
     <section class="h-screen flex flex-col md:flex-row justify-center space-y-10 md:space-y-0 md:space-x-16 items-center my-2 mx-5 md:mx-0 md:my-0">
           <div class="md:w-1/3 max-w-sm">
-            <img src="assets/1.jpg" alt="" />
+            <img src="{{ asset('home/' . $info->logo) }}"  class="w-100">
           </div>
         <form class="md:w-1/3 max-w-sm" action="" method="POST">
-          @csrf
-
-          
+          @csrf          
           <div class="text-center md:text-left">
             <h3 class="mr-1 mb-2 font-semibold">Admin AL Qudsi</h3>
             @if (Session::has('message'))

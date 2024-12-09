@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Home;
+use App\Models\info;
 use Illuminate\Http\Request;
 
 class PublikController extends Controller
@@ -12,6 +13,7 @@ class PublikController extends Controller
      */
     public function index()
     {
+       
         return view('Home.Layout');
     }
 

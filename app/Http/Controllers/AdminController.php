@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use League\CommonMark\Extension\Attributes\Node\Attributes;
 
@@ -66,6 +67,9 @@ class AdminController extends Controller
 
 
         $users = User::findOrFail($id);
+        if ($request->filled('password')) {
+            $users->password = Hash::make($request->password);
+        }
         $users->update($request->all());
         
 

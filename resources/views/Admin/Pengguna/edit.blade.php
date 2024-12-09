@@ -48,7 +48,7 @@
   </div>
   <div class="relative z-0 w-full mb-4 group">
     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-    <input id="password" class="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded " type="password" placeholder="Password" name="password" value="{{ $users->password }}" />
+    <input id="password" class="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded " type="password" placeholder="Password" name="password" />
     @error('password')
           <div class="flex items-center p-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
             <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">

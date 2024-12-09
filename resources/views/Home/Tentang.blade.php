@@ -10,28 +10,12 @@
         </h1>
       </div>
       <div class="grid grid-flow-row-dense lg:grid-cols-3 md:grid-cols-2 gap-6">
-          <div class="text-center lg:h-20 h-14 bg-white rounded-md shadow-md hover:bg-primary hover:text-white">
-            <p class=" font-semibold">Pengalaman dan Keahlian</p>
-            <h1 class="text-sm">{desc}</h1>
-          </div>
-          <div class="text-center bg-white/70 rounded-md shadow-md hover:bg-primary hover:text-white">
-            <p class=" font-semibold">Pengalaman dan Keahlian</p>
-            <h1 class="text-sm">{desc}</h1>
-          </div>
-          <div class="text-center bg-white/70 rounded-md shadow-md hover:bg-primary hover:text-white">
-
-            <p class=" font-semibold">Pengalaman dan Keahlian</p>
-            <h1 class="text-sm">{desc}</h1>
-          </div>
-          <div class="text-center bg-white/70 rounded-md shadow-md hover:bg-primary hover:text-white">
-            
-            <p class=" font-semibold">Pengalaman dan Keahlian</p>
-            <h1 class="text-sm">{desc}</h1>
-          </div>
-          <div class="text-center bg-white/70 rounded-md shadow-md hover:bg-primary hover:text-white">
-            <p class=" font-semibold">Pengalaman dan Keahlian</p>
-            <h1 class="text-sm">{desc}</h1>
-          </div>
+        @foreach ($poin as $poin)
+        <div class="text-center h-auto bg-dark/5 rounded-md shadow-md hover:bg-primary hover:text-white">
+          <p class=" font-semibold">{{$poin->poin}}</p>
+          <h1 class="text-sm">{{$poin->desk}}</h1>
+        </div>
+        @endforeach
       </div>
     </section>
   </div>

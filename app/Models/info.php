@@ -12,6 +12,7 @@ class info extends Model
         'fb',
         'tt',
         'logo',
-        'galeri'
+        'galeri',
+        'alamat',
     ];
 }

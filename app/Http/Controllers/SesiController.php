@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\info;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +12,8 @@ use Illuminate\Support\Facades\Session;
 class SesiController extends Controller
 {
     function index(){
-        return view('Component.Login');
+        $info = info::first(); 
+        return view('Component.Login', ['info' => $info]);
     }
 
     function register()

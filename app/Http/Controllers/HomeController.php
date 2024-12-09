@@ -27,6 +27,7 @@ class HomeController extends Controller
             'wa' => 'required|numeric',
             'fb' => 'required|string',
             'tt' => 'required|string',
+            'alamat' => 'required|string',
             'logo.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'galeri.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
