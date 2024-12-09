@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\kamar;
 use App\Models\penghuni;
+use App\Models\testi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -34,6 +35,10 @@ class PenghuniController extends Controller
         $role = User::find($request->user_id);
         $role->role = 'penyewa';
         $role->save();
+
+        testi::create([
+            'user_id' => $request->user_id,
+        ]);
         
         Session::flash('message','Tambah Data Berhasil');
 
@@ -73,24 +78,10 @@ class PenghuniController extends Controller
     }
 
     function deletePenghuni(Request $request, $id){
-         // Temukan penghuni berdasarkan ID
+         
          $penghuni = penghuni::findOrFail($id);
-         // Temukan kamar yang terkait dengan penghuni
-         $kamar = Kamar::find($penghuni->kamar_id);
-         $role = User::find($penghuni->user_id);
-         // Hapus penghuni
-         $penghuni->delete();
- 
-        //  // Ubah status kamar menjadi 'tersedia'
-        //  if ($kamar) {
-        //      $kamar->status = 'tersedia';
-        //      $kamar->save();
-        //  }
-        //  if ($role) {
-        //      $role->role = 'publik';
-        //      $role->save();
-        //  }
 
+         $penghuni->delete();
     
         Session::flash('message','Delete Data Berhasil');
         return redirect()->route('penghuni');

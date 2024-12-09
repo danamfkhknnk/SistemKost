@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\info;
 use App\Models\tentang;
+use App\Models\testi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -62,46 +63,9 @@ class HomeController extends Controller
 
     
     public function testi(){
-        return view('Admin.Home.testi');
+        $testi = testi::with('user')->get();
+        return view('Admin.Home.testi', compact('testi'));
     }
-
-
-    public function updatetesti(Request $request, $id){
-        $request->validate([
-            'wa' => 'required|numeric',
-            'fb' => 'required|string',
-            'tt' => 'required|string',
-            'logo.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'galeri.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-
-        $info = info::findOrFail($id);
-
-        $data = $request->all();
-
-        if ($image = $request->file('logo')) {
-            $logo = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move(public_path('home'), $logo);
-            $data['logo'] = "$logo";
-        }
-
-        if ($files = $request->file('galeri')) {
-            $uploadedImages = []; // Array untuk menyimpan nama file
-            foreach ($files as $file) {
-                $fileName = date('YmdHis') . "_" . $file->getClientOriginalName();
-                $file->move(public_path('home'), $fileName);
-                $uploadedImages[] = $fileName; // Tambahkan nama file ke array
-            }
-            $data['galeri'] = implode(',', $uploadedImages);
-        }
-        $info->update($data);
-
-       Session::flash('message', 'Update Data Berhasil');
-        
-        return redirect()->route('info');
-    }
-
-
 
     public function tentang(){
         $tentangs = tentang::all();

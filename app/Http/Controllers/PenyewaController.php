@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Keluhan;
 use App\Models\penghuni;
 use App\Models\profil;
+use App\Models\testi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -63,17 +64,17 @@ class PenyewaController extends Controller
             'nik' => 'required|string|max:20',
             'telepon' => 'required|string|max:15',
             'alamat' => 'required|string|max:255',
-            'gambarktp.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'foto.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $profil = Penghuni::where('user_id', Auth::id())->firstOrFail();
 
         $data = $request->all();
 
-        if ($image = $request->file('gambarktp')) {
-            $gambarktp = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move(public_path('gambarktp'), $gambarktp);
-            $data['gambarktp'] = "$gambarktp";
+        if ($image = $request->file('foto')) {
+            $foto = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move(public_path('foto'), $foto);
+            $data['foto'] = "$foto";
         }
 
         $user = User::findOrFail(Auth::id());
@@ -87,6 +88,31 @@ class PenyewaController extends Controller
         return redirect()->route('profil');
     }
 
+
+
+    function testimoni(){
+        $user_id = Auth::user()->id;
+        $testi = testi::where('user_id', Auth::id())->firstOrFail();
+        
+        return view('Penyewa.Testimoni', compact('testi'));
+    }
+
+    public function updateTestimoni(Request $request)
+    {
+        $request->validate([
+            'testi' => 'required|string',
+        ]);
+        // Temukan testimoni berdasarkan user_id yang sedang login
+        $testimoni = testi::where('user_id', Auth::id())->firstOrFail();
+
+        // Update kolom 'testi' dengan data dari request
+        $testimoni->testi = $request->testi; // Hanya update kolom 'testi'
+        $testimoni->save(); // Simpan perubahan
+
+        Session::flash('message', 'Update Data Berhasil');
+        return redirect()->route('testimoni');
+    }
+    
     function tagihan(){
         return view('Penyewa.Tagihan');
     }

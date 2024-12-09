@@ -46,13 +46,13 @@
       <option value="Kipas Angin"{{ $kamar->tipe == 'Kipas Angin' ? 'selected' : '' }} >Kipas Angin</option>
     </select>
   </div>
-  <div class="relative z-0 w-full mb-5 group">
+  {{-- <div class="relative z-0 w-full mb-5 group">
     <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
     <select id="status" name="status" class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
       <option value="tersedia" {{ $kamar->status == 'tersedia' ? 'selected' : '' }} >Tersedia</option>
       <option value="terisi" {{ $kamar->status == 'terisi' ? 'selected' : '' }} >Terisi</option>
     </select>
-  </div>
+  </div> --}}
   <div class="relative z-0 w-full mb-5 group">
     <label for="gambarkamar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gambar Kamar (Pilih Gambar Baru)</label>
     <div class="pb-2">

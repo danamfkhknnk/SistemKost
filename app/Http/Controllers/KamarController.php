@@ -26,7 +26,7 @@ class KamarController extends Controller
             'nokamar' => 'required',
             'tipe' => 'required|in:AC,Kipas Angin',
             'harga' => 'required|max:12',
-            'status' => 'required|in:tersedia,terisi',
+            // 'status' => 'required|in:tersedia,terisi',
             'gambarkamar.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
 
         ]);
@@ -58,7 +58,7 @@ class KamarController extends Controller
             'nokamar' => 'required',
             'tipe' => 'required|in:AC,Kipas Angin',
             'harga' => 'required|max:12',
-            'status' => 'required|in:tersedia,terisi',
+            // 'status' => 'required|in:tersedia,terisi',
             'gambarkamar.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
 
         ]);

@@ -71,8 +71,8 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('/admin/publik/informasi/{id}/edit', [HomeController::class, 'informasi'])->middleware('userAkses:admin')->name('info');
     Route::put('/admin/publik/informasi/{id}/edit', [HomeController::class, 'updateinformasi'])->middleware('userAkses:admin');
-    Route::get('/admin/publik/testi/{id}/edit', [HomeController::class, 'testi'])->middleware('userAkses:admin')->name('testi');
-    Route::put('/admin/publik/testi/{id}/edit', [HomeController::class, 'updatetesti'])->middleware('userAkses:admin');
+    Route::get('/admin/publik/testi', [HomeController::class, 'testi'])->middleware('userAkses:admin')->name('testi');
+    // Route::put('/admin/publik/testi', [HomeController::class, 'updatetesti'])->middleware('userAkses:admin');
     Route::get('/admin/publik/tentang', [HomeController::class, 'tentang'])->middleware('userAkses:admin')->name('tentang');
     Route::post('/admin/publik/tentang/edit', [HomeController::class, 'updatetentang'])->middleware('userAkses:admin');
 
@@ -84,6 +84,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/penyewa/keluhan', [PenyewaController::class, 'formKeluhan'])->middleware('userAkses:penyewa')->name('keluhan');
     Route::post('/penyewa/keluhan', [PenyewaController::class, 'storeKeluhan'])->middleware('userAkses:penyewa');
     Route::get('/penyewa/tagihan', [PenyewaController::class, 'tagihan'])->middleware('userAkses:penyewa');
+    Route::get('/penyewa/testimoni', [PenyewaController::class, 'testimoni'])->middleware('userAkses:penyewa')->name('testimoni');
+    Route::put('/penyewa/testimoni/{id}/edit', [PenyewaController::class, 'updateTestimoni'])->middleware('userAkses:penyewa');
     Route::get('/penyewa/profil', [PenyewaController::class, 'profil'])->middleware('userAkses:penyewa')->name('profil');
     Route::put('/penyewa/profil/{id}/edit', [PenyewaController::class, 'updateProfil'])->middleware('userAkses:penyewa');
     

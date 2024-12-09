@@ -21,7 +21,7 @@
                   </svg>
                </button>
               <a class="flex ms-2 md:me-24">
-                  <img src="{{ asset('home/' . $info->logo) }}"  class="lg:w-[60px] w-[50px]" alt="logo">
+                  <img src="{{ asset('home/' . $info->logo) }}"  class="lg:w-[50px] w-[50px]" alt="logo">
                 <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">TENTREM MULYO</span>
               </a>
             </div>
@@ -109,7 +109,7 @@
                            <a href={{url('admin/publik/informasi/1/edit')}} class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Data Informasi</a>
                         </li>
                         <li>
-                           <a href={{url('admin/publik/testi/1/edit')}} class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Data Testimoni</a>
+                           <a href={{url('admin/publik/testi/')}} class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Data Testimoni</a>
                         </li>
                         <li>
                            <a href={{url('admin/publik/tentang')}} class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Data Tentang</a>

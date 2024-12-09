@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\info;
 use App\Models\kamar;
 use App\Models\tentang;
+use App\Models\testi;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -27,7 +28,8 @@ class AppServiceProvider extends ServiceProvider
             $info = info::first(); // Ambil data info
             $poin = tentang::all(); // Ambil semua data tentang
             $kamar = kamar::all(); // Ambil semua data tentang
-            $view->with(compact('info', 'poin','kamar')); // Mengirimkan kedua variabel
+            $testi = testi::with('user')->get();
+            $view->with(compact('info', 'poin','kamar', 'testi')); // Mengirimkan kedua variabel
         });
         
         View::composer('Component.LayoutAdmin', function ($view) {

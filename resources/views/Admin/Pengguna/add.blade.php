@@ -3,7 +3,7 @@
 @section('content')
 <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between">
   <div class="flex">
-      <h2 class="uppercase text-xl p-2 font-bold">Tambah Data Pengguna</h2>    
+      <h2 class="uppercase text-xl p-2 font-bold">Tambah Data Admin</h2>    
   </div>  
 </div>
 <form class="mx-auto pl-2" method="POST" action="{{url('/admin/pengguna/tambah')}}" >
@@ -39,9 +39,7 @@
   </div>
   <div class="relative z-0 w-full mb-5 group">
     <label for="role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
-    <select id="role" name="role" class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-      <option value="publik">Publik</option>
-      <option value="penyewa">Penyewa</option>
+    <select id="role" name="role" class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" disabled>
       <option value="admin">Admin</option>
     </select>
   </div>
