@@ -12,8 +12,7 @@ class PublikController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-       
+    {  
         return view('Home.Layout');
     }
 
@@ -22,7 +21,7 @@ class PublikController extends Controller
      */
     public function publik()
     {
-        return view('Publik.Dashboard');
+        return view('Home.Layout');
     }
 
 }

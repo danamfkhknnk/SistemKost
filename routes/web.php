@@ -9,6 +9,7 @@ use App\Http\Controllers\KeluhanController;
 
 use App\Http\Controllers\PenyewaController;
 use App\Http\Controllers\PublikController;
+
 use App\Http\Controllers\SesiController;
 use App\Http\Controllers\TagihanController;
 use Illuminate\Support\Facades\Route;
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/home', function() {
 //     return redirect('/');
 // });
@@ -89,12 +90,6 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/penyewa/profil', [PenyewaController::class, 'profil'])->middleware('userAkses:penyewa')->name('profil');
     Route::put('/penyewa/profil/{id}/edit', [PenyewaController::class, 'updateProfil'])->middleware('userAkses:penyewa');
     
-
-
-
-
-
-
 
     Route::get('/logout', [SesiController::class, 'logout']);
 });

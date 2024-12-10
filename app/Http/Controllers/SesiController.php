@@ -18,7 +18,8 @@ class SesiController extends Controller
 
     function register()
     {
-        return view('Component.Register');
+        $info = info::first(); 
+        return view('Component.Register',  ['info' => $info]);
     }
 
 

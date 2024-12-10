@@ -10,14 +10,14 @@
 </head>
 <body class="bg-secondary">
     <section class="h-screen flex flex-col md:flex-row justify-center space-y-10 md:space-y-0 md:space-x-16 items-center my-2 mx-5 md:mx-0 md:my-0">
-          <div class="md:w-1/3 max-w-sm">
-            <img src="assets/1.jpg" alt="" />
-          </div>
+      <div class="md:w-1/3 max-w-sm">
+        <img src="{{ asset('home/' . $info->logo) }}"  class="w-100">
+      </div>
         <form class="md:w-1/3 max-w-sm" action="{{url('/register')}}" method="POST">
           
           @csrf          
           <div class="text-center md:text-left">
-            <h3 class="mr-1 mb-2 font-semibold">Registrasi Tentrem Kost</h3>
+            <h3 class="mr-1 mb-2 font-semibold">Silahkan Registrasi</h3>
           </div>
           <input class="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" type="text" placeholder="Nama Lengkap" name="nama" value="{{ old('nama')}}" autoFocus />
           @error('nama')
@@ -55,8 +55,15 @@
             </div>
           </div>
           @enderror
-          <div class="text-center md:text-left mt-2">
+          <div class=" text-center md:text-left gap-2 mt-2">
+            <span class="pt-1 font-semibold underline text-sm">Sudah Punya Akun ? <a href="{{url('/login')}}" class="uppercase">Login</a></span>
+          </div>
+          <div class=" text-center md:text-left gap-2 mt-2">
+            
             <button type="submit" class=" bg-primary hover:bg-primary/50 px-6 py-2 text-white uppercase rounded text-xs tracking-wider">Submit</button>
+            <a class="mt-2 bg-primary hover:bg-primary/50 px-6 py-2 text-white uppercase rounded text-xs tracking-wider" href="{{url('/')}}">
+              Kembali
+             </a>
           </div>
         </form>
       </section>

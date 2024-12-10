@@ -16,7 +16,7 @@
         <form class="md:w-1/3 max-w-sm" action="" method="POST">
           @csrf          
           <div class="text-center md:text-left">
-            <h3 class="mr-1 mb-2 font-semibold">Admin AL Qudsi</h3>
+            <h3 class="mr-1 mb-2 font-semibold"> Silahkan Login</h3>
             @if (Session::has('message'))
             <div class="flex items-center p-2 mb-2 text-sm text-blue-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" >
               <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -43,16 +43,19 @@
           
           <input class="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" type="text" placeholder="Email Address" name="email" value="{{ old('email')}}" autoFocus />
           <input class="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="password" placeholder="Password" name="password" />
+          
+          <div class=" text-center md:text-left mt-2">
+            <span class="pt-1 font-semibold underline text-sm">Belum Punya Akun ? <a href="{{url('/register')}}" class="uppercase">Register</a></span>
+          </div>
           <div class="text-center md:text-left">
-            <button class="mt-4 bg-primary hover:bg-primary/50 px-6 py-2 text-white uppercase rounded text-xs tracking-wider" name="submit" type="submit">
+            <button class="mt-2 bg-primary hover:bg-primary/50 px-6 py-2 text-white uppercase rounded text-xs tracking-wider" name="submit" type="submit">
               Login
             </button>
-          </div>
-          <div class="text-center md:text-left mt-2">
-            <a href={{url('/register')}} class=" bg-primary hover:bg-primary/50 px-4 py-2 text-white uppercase rounded text-xs tracking-wider">
-              Register
+            <a class="mt-2 bg-primary hover:bg-primary/50 px-6 py-2 text-white uppercase rounded text-xs tracking-wider" href="{{url('/')}}">
+             Kembali
             </a>
           </div>
+          
         </form>
       </section>
     

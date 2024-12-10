@@ -24,12 +24,19 @@
            <p class="text-gray-700 mb-2">
             Tipe: {{$kamar->tipe}}
            </p>
-           <p class="text-gray-700 mb-2">
+           <p class="text-gray-700 mb-4">
             Harga : Rp.{{$kamar->harga}} 
            </p>
-           <button class="bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:bg-blue-600">
+           @if (Auth::check())
+           <a class="bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:bg-blue-600">
             Pesan
-           </button>
+           </a>
+            @else
+            <a href="{{url('/login')}}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+              Silahkan Login
+            </a>
+            @endif
+           
           </div>
          </div>
         @endforeach

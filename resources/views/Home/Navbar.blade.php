@@ -15,7 +15,21 @@
       <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="#kamar">Kamar</a></li>
       <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="#testi">Testimoni</a></li>
       <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2" href="#kontak">Kontak</a></li>
-      <li><a class=" py-2 px-3 bg-primary/40 rounded-full block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2" href="{{ url('/login')}}">LOGIN</a></li>
+    
+
+      @if (Auth::check())
+            <li class="py-1 px-2 bg-primary/80 font-semibold rounded-lg block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2 mr-0 lg:mr-2" > {{ Auth::user()->nama }}</li>
+            <li >
+            <a class="py-1 px-1 bg-primary/80 rounded-lg block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2 mr-0 lg:mr-2" href="{{ url('/logout') }}"><svg class="flex-shrink-0 w-5 h-6 text-dark transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"/>
+            </svg>
+            </a>
+            </li>
+        @else
+        <li class="text-center"><a class="py-1 px-2 bg-primary/80 font-semibold rounded-lg block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2 mr-0 lg:mr-2" href="{{ url('/register')}}">Registrasi</a></li>
+        <li class="text-center"><a class="py-1 px-2 bg-primary/80 font-semibold rounded-lg block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2" href="{{ url('/login')}}">Login</a></li>
+        @endif
+
     </ul>
   </nav>
 </div>

@@ -29,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
             $poin = tentang::all(); // Ambil semua data tentang
             $kamar = kamar::all(); // Ambil semua data tentang
             $testi = testi::with('user')->get();
+            
             $view->with(compact('info', 'poin','kamar', 'testi')); // Mengirimkan kedua variabel
         });
         
