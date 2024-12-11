@@ -23,7 +23,7 @@ class KamarController extends Controller
 
     function tambahKamar(Request $request){
          $request->validate([
-            'nokamar' => 'required',
+            'nokamar' => 'required|unique:kamars,nokamar',
             'tipe' => 'required|in:AC,Kipas Angin',
             'harga' => 'required|max:12',
             // 'status' => 'required|in:tersedia,terisi',

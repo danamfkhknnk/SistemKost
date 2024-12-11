@@ -66,4 +66,7 @@ class User extends Authenticatable
     function testi(){
         return $this->hasMany(testi::class);
     }
+    function pembayaran(){
+        return $this->hasMany(pembayaran::class);
+    }
 }

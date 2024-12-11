@@ -40,4 +40,8 @@ class penghuni extends Model
     {
         return $this->belongsTo(kamar::class);
     }
+
+    function pembayaran(){
+        return $this->hasMany(pembayaran::class);
+    }
 }

@@ -27,9 +27,8 @@ class AppServiceProvider extends ServiceProvider
         View::composer('Home.Layout', function ($view) {
             $info = info::first(); // Ambil data info
             $poin = tentang::all(); // Ambil semua data tentang
-            $kamar = kamar::all(); // Ambil semua data tentang
+            $kamar = kamar::where('status', 'tersedia')->get(); // Ambil semua data tentang
             $testi = testi::with('user')->get();
-            
             $view->with(compact('info', 'poin','kamar', 'testi')); // Mengirimkan kedua variabel
         });
         
