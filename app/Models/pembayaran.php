@@ -7,6 +7,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class pembayaran extends Model
 {
+
+    protected $fillable = [
+        'user_id',
+        'kamar_id',
+        'penghuni_id',
+        'status',
+        'tipe',
+        'snap_token',
+    ];
+
     function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

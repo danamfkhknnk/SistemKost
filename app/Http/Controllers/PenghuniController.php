@@ -77,7 +77,7 @@ class PenghuniController extends Controller
 
     }
 
-    function deletePenghuni(Request $request, $id){
+    function deletePenghuni($id){
          
          $penghuni = penghuni::findOrFail($id);
 

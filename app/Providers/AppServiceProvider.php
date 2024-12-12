@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\info;
 use App\Models\kamar;
+use App\Models\pembayaran;
 use App\Models\tentang;
 use App\Models\testi;
 use Illuminate\Support\Facades\View;
@@ -29,7 +30,9 @@ class AppServiceProvider extends ServiceProvider
             $poin = tentang::all(); // Ambil semua data tentang
             $kamar = kamar::where('status', 'tersedia')->get(); // Ambil semua data tentang
             $testi = testi::with('user')->get();
-            $view->with(compact('info', 'poin','kamar', 'testi')); // Mengirimkan kedua variabel
+            $bayar =  pembayaran::all();
+            $view->with(compact('info','bayar','poin','kamar', 'testi'));
+             // Mengirimkan kedua variabel
         });
         
         View::composer('Component.LayoutAdmin', function ($view) {

@@ -17,7 +17,8 @@ return new class extends Migration
             $table->foreignId('kamar_id')->constrained()->nullable();
             $table->foreignId('penghuni_id')->constrained()->nullable();
             $table->enum('status',['pending','selesai','batal']);
-            $table->date('tgglbayar')->nullable();
+            $table->enum('tipe',['baru','sewa'])->nullable();
+            $table->string('snap_token')->nullable();
             $table->timestamps();
         });
     }

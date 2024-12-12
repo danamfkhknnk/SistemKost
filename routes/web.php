@@ -33,7 +33,11 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/admin', [AdminController::class, 'index'])->middleware('userAkses:admin');
 
 
-    Route::get('/publik', [PublikController::class, 'publik'])->middleware('userAkses:publik');
+    Route::get('/publik', [PublikController::class, 'publik'])->middleware('userAkses:publik')->name('publik');
+    Route::post('/publik/booking/{id}', [PublikController::class, 'pesanKamar'])->middleware('userAkses:publik')->name('pesanKamar');
+    Route::get('/publik/booking/{id}', [PublikController::class, 'konfirmasi'])->middleware('userAkses:publik')->name('konfirmasi');
+    Route::post('/publik/booking/success/{id}', [PublikController::class, 'berhasil'])->middleware('userAkses:publik')->name('berhasil');
+
 
 
 
@@ -81,7 +85,7 @@ Route::middleware(['auth'])->group(function(){
 
 
 
-    Route::get('/penyewa', [PenyewaController::class, 'index'])->middleware('userAkses:penyewa');
+    Route::get('/penyewa', [PenyewaController::class, 'index'])->middleware('userAkses:penyewa')->name('penyewa');
     Route::get('/penyewa/keluhan', [PenyewaController::class, 'formKeluhan'])->middleware('userAkses:penyewa')->name('keluhan');
     Route::post('/penyewa/keluhan', [PenyewaController::class, 'storeKeluhan'])->middleware('userAkses:penyewa');
     Route::get('/penyewa/tagihan', [PenyewaController::class, 'tagihan'])->middleware('userAkses:penyewa');

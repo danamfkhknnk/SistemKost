@@ -26,6 +26,7 @@
             Harga : Rp.{{$kamar->harga}} 
            </p>
            @if (Auth::check())
+           @if (Auth::user()->role == 'publik')
            <button data-modal-target="large-modal-{{ $kamar->id }}" data-modal-toggle="large-modal-{{ $kamar->id }}" type="button" class="bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:bg-blue-600">
                Pemesanan
            </button>
@@ -66,16 +67,26 @@
                     <div class="border-t-2 border-secondary/50 py-3">
                       <div class="md:flex justify-between">
                         <p class="text-xl font-bold"> Rp.{{$kamar->harga}}/Bulan</p>
-                        <button type="button" class="bg-blue-500 text-white px-2 py-2 rounded hover:bg-blue-600">
-                          Pesan Sekarang
-                        </button>
+                        <form action="{{ route('pesanKamar', $kamar->id ) }}" method="POST">
+                          @csrf
+                          <input type="hidden" name="kamar_id" value="{{ $kamar->id }}">
+                          <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                          <input type="hidden" name="tipe" value="baru"> <!-- Atau sesuaikan dengan logika Anda -->
+                          <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                              Pesan Sekarang
+                          </button>
+                      </form>
                       </div>
                     </div>
                   </div>                  
                 </div>
             </div>
         </div>
-        
+        @elseif (Auth::user()->role == 'penyewa' || Auth::user()->role == 'admin')
+        <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:bg-blue-600" disabled>
+          Pemesanan
+      </button>
+      @endif
             @else
             <a href="{{url('/login')}}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
               Silahkan Login

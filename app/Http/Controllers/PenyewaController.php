@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Session;
 class PenyewaController extends Controller
 {
     function index(){
+
+        
         return view('Penyewa.Dashboard');
     }
     function formkeluhan(){
