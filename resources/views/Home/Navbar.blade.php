@@ -26,7 +26,10 @@
               </button>
                 <!-- Dropdown menu -->
                 <div id="dropdownNavbar" class="z-10 hidden font-semibold bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
-                    <div class="">
+                    <div class=>
+                      <a href="{{url('/penyewa')}}" class="block px-8 py-1 text-sm bg-primary/20 font-semibold rounded-lg border-b-2 border-transparent hover:border-indigo-400">Dashboard</a>
+                    </div>
+                    <div class=>
                       <a href="{{url('/logout')}}" class="block px-8 py-1 text-sm bg-primary/20 font-semibold rounded-lg border-b-2 border-transparent hover:border-indigo-400">Keluar</a>
                     </div>
                 </div>

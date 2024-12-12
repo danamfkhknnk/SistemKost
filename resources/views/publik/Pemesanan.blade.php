@@ -19,7 +19,7 @@
             <p class="text-lg mb-2"><strong>Tanggal Pembayaran:</strong> {{ $pembayaran->created_at }}</p>
         </div>
         <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded mt-3 hover:bg-blue-700" id="pay-button">
-            <i class="fas fa-credit-card mr-2"></i>Bayar Sekarang
+          Bayar Sekarang
         </button>
     </div>
 </div>

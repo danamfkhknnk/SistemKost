@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Keluhan;
+use App\Models\pembayaran;
 use App\Models\penghuni;
 use App\Models\profil;
 use App\Models\testi;
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Session;
 
 class PenyewaController extends Controller
 {
-    function index(){
+    function index(){ 
 
         
         return view('Penyewa.Dashboard');
@@ -106,7 +107,6 @@ class PenyewaController extends Controller
         ]);
         // Temukan testimoni berdasarkan user_id yang sedang login
         $testimoni = testi::where('user_id', Auth::id())->firstOrFail();
-
         // Update kolom 'testi' dengan data dari request
         $testimoni->testi = $request->testi; // Hanya update kolom 'testi'
         $testimoni->save(); // Simpan perubahan
@@ -116,8 +116,16 @@ class PenyewaController extends Controller
     }
     
     function tagihan(){
-        return view('Penyewa.Tagihan');
+        $pembayaran = Pembayaran::with('kamar', 'penghuni')->where('user_id', Auth::user()->id)->get();
+        return view('Penyewa.Tagihan', compact('pembayaran'));
     }
 
+    function bayarTagihan(Request $request){
+        $pembayaran = Pembayaran::find($request->id);
+        $pembayaran->status = 'selesai';
+        $pembayaran->save();
+        Session::flash('message', 'Pembayaran Sewa Berhasil');
+        return redirect()->route('tagihan');
+    }
     
 }

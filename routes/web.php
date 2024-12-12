@@ -6,7 +6,7 @@ use App\Http\Controllers\InfoController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\PenghuniController;
 use App\Http\Controllers\KeluhanController;
-
+use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PenyewaController;
 use App\Http\Controllers\PublikController;
 
@@ -64,7 +64,10 @@ Route::middleware(['auth'])->group(function(){
 
 
 
-    Route::get('/admin/tagihan', [TagihanController::class, 'index'])->middleware('userAkses:admin');
+    Route::get('/admin/pembayaran', [PembayaranController::class, 'index'])->middleware('userAkses:admin')->name('pembayaran');
+    Route::get('/admin/pembayaran/tambah', [PembayaranController::class, 'formPembayaran'])->middleware('userAkses:admin');
+    Route::post('/admin/pembayaran/tambah', [PembayaranController::class, 'tambahPembayaran'])->middleware('userAkses:admin');
+    Route::get('/admin/pembayaran/{id}/delete', [PembayaranController::class, 'deletePembayaran'])->middleware('userAkses:admin');
 
     Route::get('/admin/penghuni', [PenghuniController::class, 'index'])->middleware('userAkses:admin')->name('penghuni');
     Route::get('/admin/penghuni/tambah', [PenghuniController::class, 'formPenghuni'])->middleware('userAkses:admin');
@@ -88,7 +91,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/penyewa', [PenyewaController::class, 'index'])->middleware('userAkses:penyewa')->name('penyewa');
     Route::get('/penyewa/keluhan', [PenyewaController::class, 'formKeluhan'])->middleware('userAkses:penyewa')->name('keluhan');
     Route::post('/penyewa/keluhan', [PenyewaController::class, 'storeKeluhan'])->middleware('userAkses:penyewa');
-    Route::get('/penyewa/tagihan', [PenyewaController::class, 'tagihan'])->middleware('userAkses:penyewa');
+    Route::get('/penyewa/tagihan', [PenyewaController::class, 'tagihan'])->middleware('userAkses:penyewa')->name('tagihan');
+    Route::post('/penyewa/tagihan/{id}', [PenyewaController::class, 'bayarTagihan'])->middleware('userAkses:penyewa')->name('bayarTagihan');
     Route::get('/penyewa/testimoni', [PenyewaController::class, 'testimoni'])->middleware('userAkses:penyewa')->name('testimoni');
     Route::put('/penyewa/testimoni/{id}/edit', [PenyewaController::class, 'updateTestimoni'])->middleware('userAkses:penyewa');
     Route::get('/penyewa/profil', [PenyewaController::class, 'profil'])->middleware('userAkses:penyewa')->name('profil');

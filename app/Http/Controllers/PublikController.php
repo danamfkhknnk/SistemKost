@@ -86,10 +86,6 @@ class PublikController extends Controller
     {
         $info = info::first();
         $pembayaran = Pembayaran::with(['kamar'])->find($id);
-
-        if (!$pembayaran) {
-            abort(404);
-        }
         return view('publik.Pemesanan', compact('pembayaran','info'));
     }
 
