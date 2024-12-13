@@ -23,7 +23,7 @@
             Tipe: {{$kamar->tipe}}
            </p>
            <p class="text-gray-700 mb-4">
-            Harga : Rp.{{$kamar->harga}} 
+            Harga : Rp.{{$kamar->harga}}/Bulan 
            </p>
            @if (Auth::check())
            @if (Auth::user()->role == 'publik')

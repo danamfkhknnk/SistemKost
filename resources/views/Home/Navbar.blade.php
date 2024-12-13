@@ -26,15 +26,27 @@
               </button>
                 <!-- Dropdown menu -->
                 <div id="dropdownNavbar" class="z-10 hidden font-semibold bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
-                    <div class=>
+                  @if(Auth::user()->role == 'penyewa')
+                    <div>
                       <a href="{{url('/penyewa')}}" class="block px-8 py-1 text-sm bg-primary/20 font-semibold rounded-lg border-b-2 border-transparent hover:border-indigo-400">Dashboard</a>
                     </div>
-                    <div class=>
+                    <div>
                       <a href="{{url('/logout')}}" class="block px-8 py-1 text-sm bg-primary/20 font-semibold rounded-lg border-b-2 border-transparent hover:border-indigo-400">Keluar</a>
-                    </div>
+                  </div>
+                  @elseif(Auth::user()->role == 'admin')
+                  <div>
+                      <a href="{{url('/admin')}}" class="block px-8 py-1 text-sm bg-primary/20 font-semibold rounded-lg border-b-2 border-transparent hover:border-indigo-400">Dashboard</a>
+                  </div> 
+                  <div>
+                    <a href="{{url('/logout')}}" class="block px-8 py-1 text-sm bg-primary/20 font-semibold rounded-lg border-b-2 border-transparent hover:border-indigo-400">Keluar</a>
+                </div> 
+                  @else
+                  <div>
+                      <a href="{{url('/logout')}}" class="block px-8 py-1 text-sm bg-primary/20 font-semibold rounded-lg border-b-2 border-transparent hover:border-indigo-400">Keluar</a>
+                  </div>
+                  @endif
                 </div>
-        </li>
-            
+        </li>   
         @else
         <li class="text-center"><a class="py-1 px-2 bg-primary/80 font-semibold rounded-lg block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2 mr-0 lg:mr-2" href="{{ url('/register')}}">Registrasi</a></li>
         <li class="text-center"><a class="py-1 px-2 bg-primary/80 font-semibold rounded-lg block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2" href="{{ url('/login')}}">Login</a></li>

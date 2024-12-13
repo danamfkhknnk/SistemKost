@@ -22,7 +22,7 @@ class PembayaranController extends Controller
         $penghuni = Penghuni::find($request->penghuni_id);
         $pembayaran = Pembayaran::create([
             'penghuni_id' => $request->penghuni_id,
-            'jatuhtempo' => $request->jatuhtempo,
+           'jatuhtempo' => $request->jatuhtempo . '-' . date('d', strtotime($penghuni->tgglmasuk)),
             'kamar_id' => $penghuni->kamar_id, // Gunakan penghuni->kamar_id, bukan $pembayaran->id
             'user_id' => $penghuni->user->id,
             'status' => 'pending',

@@ -5,7 +5,7 @@
 <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-2">
     <div class="flex">
         <h2 class="uppercase text-xl p-2 font-bold">Data Pembayaran</h2> 
-        <label for="table-search" class="sr-only">Search</label>
+        {{-- <label for="table-search" class="sr-only">Search</label>
       <div class="relative mt-1">
         <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -13,7 +13,7 @@
             </svg>
         </div>
         <input type="text" id="table-search" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-60 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for items">
-    </div>
+    </div> --}}
     </div>
     <div class="flex gap-4">
       <div class="pt-2">
@@ -59,9 +59,6 @@
                 Pembuatan
               </th>
               <th scope="col" class="px-6 py-3">
-                Berhasil
-              </th>
-              <th scope="col" class="px-6 py-3">
                 Aksi
               </th>
           </tr>
@@ -79,16 +76,17 @@
                  {{$pembayaran->kamar->nokamar}}
               </td>
               <td class="px-6 py-4">
-                  {{$pembayaran->status}}
+                  @if ($pembayaran->updated_at)
+                      Pembayaran  {{$pembayaran->status}} pada {{$pembayaran->updated_at}}
+                  @else
+                      Pembayaran {{$pembayaran->status}}
+                  @endif
               </td>
               <td class="px-6 py-4">
                 Pembayaran {{$pembayaran->tipe}} {{$pembayaran->jatuhtempo}}
               </td>
               <td class="px-6 py-4">
                   {{$pembayaran->created_at->format('Y-m-d')}}
-              </td>
-              <td class="px-6 py-4">
-                  {{$pembayaran->updated_at ?? 'Belum'}}
               </td>
               <td class="px-6 py-4">
                   @if($pembayaran->updated_at)

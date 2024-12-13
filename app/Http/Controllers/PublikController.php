@@ -7,6 +7,7 @@ use App\Models\info;
 use App\Models\kamar;
 use App\Models\pembayaran;
 use App\Models\penghuni;
+use App\Models\testi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -102,6 +103,10 @@ class PublikController extends Controller
 
         $pembayaran->penghuni_id = $penghuni->id;
         $pembayaran->save();
+
+        testi::create([
+            'user_id' => $pembayaran->user_id,
+        ]);
 
         $kamar = kamar::find($pembayaran->kamar_id);
         $kamar->status = 'terisi';

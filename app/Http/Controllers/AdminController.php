@@ -11,6 +11,9 @@ use League\CommonMark\Extension\Attributes\Node\Attributes;
 
 class AdminController extends Controller
 {
+    function dashboard(){
+        return view ('Admin.Dashboard');
+    }
     function index (){
 
         $users=User::get()->all();

@@ -55,14 +55,13 @@ class KamarController extends Controller
 
     function updateKamar(Request $request, $id){
         $request->validate([
-            'nokamar' => 'required',
             'tipe' => 'required|in:AC,Kipas Angin',
             'harga' => 'required|max:12',
             // 'status' => 'required|in:tersedia,terisi',
             'gambarkamar.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
 
         ]);
-        $kamars = $request->only(['nokamar', 'tipe', 'harga', 'status']); // Ambil hanya field yang diperlukan
+        $kamars = $request->only(['tipe', 'harga', 'status']); // Ambil hanya field yang diperlukan
         // Temukan data kamar berdasarkan ID
         $kamar = Kamar::findOrFail($id);
         // Proses upload gambar

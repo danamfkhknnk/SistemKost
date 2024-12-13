@@ -7,6 +7,7 @@ use App\Models\tentang;
 use App\Models\testi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -27,31 +28,65 @@ class HomeController extends Controller
         $request->validate([
             'wa' => 'required|numeric',
             'fb' => 'required|string',
-            'tt' => 'required|string',
             'alamat' => 'required|string',
             'logo.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'galeri.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
+ 
         $info = info::findOrFail($id);
 
-        $data = $request->all();
+        $data = $request->only(['wa','fb','alamat']);
 
-        if ($image = $request->file('logo')) {
-            $logo = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move(public_path('home'), $logo);
-            $data['logo'] = "$logo";
+        if ($files = $request->file('logo')) {
+            if ($info->logo) {
+                Storage::disk('public')->delete('home/' . $info->logo); // Hapus gambar lama
+            }
+                $fileName = date('YmdHis') . "_" . $files->getClientOriginalName();
+                $files->move(public_path('home'), $fileName); // Pindahkan file ke direktori yang ditentukan
+                $data['logo'] = "$fileName";
+        } else {
+            // Jika tidak ada gambar baru, gunakan gambar lama
+            $data['logo'] = $info->logo;
         }
 
         if ($files = $request->file('galeri')) {
             $uploadedImages = []; // Array untuk menyimpan nama file
+            // Hapus gambar lama jika ada
+            if ($info->galeri) {
+                $oldImages = explode(',', $info->galeri);
+                foreach ($oldImages as $oldImage) {
+                    Storage::disk('public')->delete('home/' . $oldImage); // Hapus gambar lama
+                }
+            }
+            // Upload gambar baru
             foreach ($files as $file) {
                 $fileName = date('YmdHis') . "_" . $file->getClientOriginalName();
-                $file->move(public_path('home'), $fileName);
+                $file->move(public_path('home'), $fileName); // Pindahkan file ke direktori yang ditentukan
                 $uploadedImages[] = $fileName; // Tambahkan nama file ke array
             }
-            $data['galeri'] = implode(',', $uploadedImages);
+            $data['galeri'] = implode(',', $uploadedImages); // Gabungkan nama file menjadi string
+        } else {
+            // Jika tidak ada gambar baru, gunakan gambar lama
+            $data['galeri'] = $info->galeri;
         }
+
+
+        // if ($image = $request->file('logo')) {
+        //     $logo = date('YmdHis') . "." . $image->getClientOriginalExtension();
+        //     $image->move(public_path('home'), $logo);
+        //     $data['logo'] = "$logo";
+        // }
+
+        // if ($files = $request->file('galeri')) {
+        //     $uploadedImages = []; // Array untuk menyimpan nama file
+        //     foreach ($files as $file) {
+        //         $fileName = date('YmdHis') . "_" . $file->getClientOriginalName();
+        //         $file->move(public_path('home'), $fileName);
+        //         $uploadedImages[] = $fileName; // Tambahkan nama file ke array
+        //     }
+        //     $data['galeri'] = implode(',', $uploadedImages);
+        // }
+
         $info->update($data);
         
         Session::flash('message', 'Update Data Berhasil');

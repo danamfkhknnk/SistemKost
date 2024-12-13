@@ -22,7 +22,7 @@
   @method('PUT')
   
   <div class="relative z-0 w-full mb-5 group">
-    <label for="wa" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Whatsapp</label>
+    <label for="wa" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Masukkan No Whatsapp (62dst)</label>
     <input type="number" value="{{ old('wa', $info->wa) }}" name="wa" id="wa" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
     @error('wa')
     <div class="flex items-center p-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
@@ -51,23 +51,9 @@
     </div>
 @enderror
   </div>
+
   <div class="relative z-0 w-full mb-5 group">
-    <label for="tt" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tiktok</label>
-    <input type="text" value="{{ old('tt', $info->tt) }}" name="tt" id="tt" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-    @error('tt')
-    <div class="flex items-center p-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-      <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-      </svg>
-      <span class="sr-only">Info</span>
-      <div>
-        <span class="font-medium">{{$message}}</span>
-      </div>
-    </div>
-@enderror
-  </div>
-  <div class="relative z-0 w-full mb-5 group">
-    <label for="fb" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Facebook</label>
+    <label for="fb" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Masukkan Username Facebook</label>
     <input type="text" value="{{ old('tt', $info->fb) }}" name="fb" id="tt" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
     @error('fb')
     <div class="flex items-center p-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">

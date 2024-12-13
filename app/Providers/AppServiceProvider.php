@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
             $info = info::first(); // Ambil data info
             $poin = tentang::all(); // Ambil semua data tentang
             $kamar = kamar::where('status', 'tersedia')->get(); // Ambil semua data tentang
-            $testi = testi::with('user')->get();
+            $testi = testi::with('user')->whereNotNull('testi')->get();
             $bayar =  pembayaran::all();
             $view->with(compact('info','bayar','poin','kamar', 'testi'));
              // Mengirimkan kedua variabel

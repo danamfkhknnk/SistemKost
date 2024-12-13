@@ -11,16 +11,10 @@ use App\Http\Controllers\PenyewaController;
 use App\Http\Controllers\PublikController;
 
 use App\Http\Controllers\SesiController;
-use App\Http\Controllers\TagihanController;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/home', function() {
-//     return redirect('/');
-// });
 
 Route::middleware(['guest'])->group(function(){
     Route::get('/login', [SesiController::class, 'index']);
@@ -30,7 +24,7 @@ Route::middleware(['guest'])->group(function(){
 });
 
 Route::middleware(['auth'])->group(function(){
-    Route::get('/admin', [AdminController::class, 'index'])->middleware('userAkses:admin');
+    Route::get('/admin', [AdminController::class, 'dashboard'])->middleware('userAkses:admin');
 
 
     Route::get('/publik', [PublikController::class, 'publik'])->middleware('userAkses:publik')->name('publik');
@@ -80,12 +74,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/admin/publik/informasi/{id}/edit', [HomeController::class, 'informasi'])->middleware('userAkses:admin')->name('info');
     Route::put('/admin/publik/informasi/{id}/edit', [HomeController::class, 'updateinformasi'])->middleware('userAkses:admin');
     Route::get('/admin/publik/testi', [HomeController::class, 'testi'])->middleware('userAkses:admin')->name('testi');
-    // Route::put('/admin/publik/testi', [HomeController::class, 'updatetesti'])->middleware('userAkses:admin');
     Route::get('/admin/publik/tentang', [HomeController::class, 'tentang'])->middleware('userAkses:admin')->name('tentang');
     Route::post('/admin/publik/tentang/edit', [HomeController::class, 'updatetentang'])->middleware('userAkses:admin');
-
-
-
 
 
     Route::get('/penyewa', [PenyewaController::class, 'index'])->middleware('userAkses:penyewa')->name('penyewa');
