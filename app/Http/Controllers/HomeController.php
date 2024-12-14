@@ -70,23 +70,6 @@ class HomeController extends Controller
             $data['galeri'] = $info->galeri;
         }
 
-
-        // if ($image = $request->file('logo')) {
-        //     $logo = date('YmdHis') . "." . $image->getClientOriginalExtension();
-        //     $image->move(public_path('home'), $logo);
-        //     $data['logo'] = "$logo";
-        // }
-
-        // if ($files = $request->file('galeri')) {
-        //     $uploadedImages = []; // Array untuk menyimpan nama file
-        //     foreach ($files as $file) {
-        //         $fileName = date('YmdHis') . "_" . $file->getClientOriginalName();
-        //         $file->move(public_path('home'), $fileName);
-        //         $uploadedImages[] = $fileName; // Tambahkan nama file ke array
-        //     }
-        //     $data['galeri'] = implode(',', $uploadedImages);
-        // }
-
         $info->update($data);
         
         Session::flash('message', 'Update Data Berhasil');

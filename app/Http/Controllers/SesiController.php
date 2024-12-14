@@ -32,12 +32,10 @@ class SesiController extends Controller
             'email.required' => 'Email wajib diisi',
             'password.required' => 'Password wajib diisi'
         ]);
-
         $infologin = [
             'email'=>$request->email,
             'password'=>$request->password,
         ];
-
         if(Auth::attempt($infologin)) {
             if(Auth::user()->role == 'admin'){
                 return redirect('/admin');

@@ -13,7 +13,7 @@
           <div class="md:w-1/3 max-w-sm">
             <img src="{{ asset('home/' . $info->logo) }}"  class="w-100">
           </div>
-        <form class="md:w-1/3 max-w-sm" action="" method="POST">
+        <form class="md:w-1/3 max-w-sm" action="{{url('/aksilogin')}}" method="POST">
           @csrf          
           <div class="text-center md:text-left">
             <h3 class="mr-1 mb-2 font-semibold"> Silahkan Login</h3>

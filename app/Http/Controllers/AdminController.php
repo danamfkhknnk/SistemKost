@@ -7,7 +7,7 @@ use App\Models\Keluhan;
 use App\Models\pembayaran;
 use App\Models\penghuni;
 use App\Models\User;
-
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -52,11 +52,14 @@ class AdminController extends Controller
             'password' => 'required|string|min:8',
         ]);
 
-        User::create( attributes : $request->only('nama','email','password','telepon'));
+        $user = User::create( attributes : $request->only('nama','email','password','telepon'));
+        //event(new Registered($user));
+        $user->sendEmailVerificationNotification();
+       
+        // // Flash message untuk sukses
+        Session::flash('message', 'Registrasi Berhasil, Silahkan Cek Email Anda untuk Verifikasi.');
 
-        Session::flash('message','Registrasi Berhasil, Silahkan Login');
-
-        return redirect()->route('login');
+        return redirect()->route('verification.notice');
     }
 
 
