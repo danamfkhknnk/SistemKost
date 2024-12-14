@@ -10,7 +10,6 @@ class penghuni extends Model
     protected $fillable = [
         'user_id',
         'nik',
-        'telepon',
         'alamat',
         'kamar_id',
         'tgglmasuk',

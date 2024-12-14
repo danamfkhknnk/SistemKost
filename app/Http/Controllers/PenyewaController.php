@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\info;
 use App\Models\Keluhan;
 use App\Models\pembayaran;
 use App\Models\penghuni;
 use App\Models\profil;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\testi;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -55,7 +57,7 @@ class PenyewaController extends Controller
     function profil(){
         $user_nama = Auth::user()->nama;
         $user_id = Auth::user()->id;
-        $profil = penghuni::where('user_id', Auth::id())->firstOrFail();
+        $profil = penghuni::with('user')->where('user_id', Auth::id())->firstOrFail();
         
         return view('Penyewa.Profil', compact('user_nama', 'profil'));
     }
@@ -65,7 +67,7 @@ class PenyewaController extends Controller
         $request->validate([
             'nama' => 'required|string|max:255',
             'nik' => 'required|string|max:20',
-            'telepon' => 'required|string|max:15',
+            'telepon' => 'required|max:15',
             'alamat' => 'required|string|max:255',
             'foto.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
@@ -82,6 +84,7 @@ class PenyewaController extends Controller
 
         $user = User::findOrFail(Auth::id());
         $user->nama = $request->nama; // Update nama
+        $user->telepon = $request->telepon; // Update nama
         $user->save(); // Simpan perubahan
 
         // Update data di tabel penghuni
@@ -126,6 +129,19 @@ class PenyewaController extends Controller
         $pembayaran->save();
         Session::flash('message', 'Pembayaran Sewa Berhasil');
         return redirect()->route('tagihan');
+    }
+
+    public function pdfTagihan($id)
+    {
+        $pembayaran = Pembayaran::with('kamar', 'user')->find($id);
+
+        $info = info::first(); 
+
+        // Load view untuk PDF
+        $pdf = PDF::loadView('Penyewa.invoice', compact('pembayaran','info'));
+
+        // Download PDF
+        return $pdf->download('lnvoice'.$pembayaran->id.'.pdf');
     }
     
 }

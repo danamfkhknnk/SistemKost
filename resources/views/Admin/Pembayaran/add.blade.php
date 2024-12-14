@@ -12,7 +12,7 @@
     <label for="penghuni_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Id Penghuni</label>
     <select name="penghuni_id" id="penghuni_id" class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
       @foreach ($penghuni as $penghuni)
-          <option value="{{ $penghuni->id }}">Id : {{ $penghuni->id }} (No Kamar : {{ $penghuni->kamar->nokamar }} | Nama : {{ $penghuni->user->nama }})</option>
+          <option value="{{ $penghuni->id }}">Penghuni : {{ $penghuni->id }} (Kamar : {{ $penghuni->kamar->nokamar }} | Nama : {{ $penghuni->user->nama }})</option>
       @endforeach
     </select>
     @error('penghuni_id')

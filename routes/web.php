@@ -63,6 +63,9 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/admin/pembayaran/tambah', [PembayaranController::class, 'tambahPembayaran'])->middleware('userAkses:admin');
     Route::get('/admin/pembayaran/{id}/delete', [PembayaranController::class, 'deletePembayaran'])->middleware('userAkses:admin');
 
+    Route::get('/admin/laporan', [PembayaranController::class, 'laporanPembayaran'])->middleware('userAkses:admin');
+    Route::get('admin/laporan/pdf', [PembayaranController::class, 'downloadPDF'])->name('admin.laporan.pdf');
+
     Route::get('/admin/penghuni', [PenghuniController::class, 'index'])->middleware('userAkses:admin')->name('penghuni');
     Route::get('/admin/penghuni/tambah', [PenghuniController::class, 'formPenghuni'])->middleware('userAkses:admin');
     Route::post('/admin/penghuni/tambah', [PenghuniController::class, 'createPenghuni'])->middleware('userAkses:admin');
@@ -83,6 +86,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/penyewa/keluhan', [PenyewaController::class, 'storeKeluhan'])->middleware('userAkses:penyewa');
     Route::get('/penyewa/tagihan', [PenyewaController::class, 'tagihan'])->middleware('userAkses:penyewa')->name('tagihan');
     Route::post('/penyewa/tagihan/{id}', [PenyewaController::class, 'bayarTagihan'])->middleware('userAkses:penyewa')->name('bayarTagihan');
+    Route::get('/penyewa/tagihan/{id}', [PenyewaController::class, 'pdfTagihan'])->middleware('userAkses:penyewa')->name('pdfTagihan');
     Route::get('/penyewa/testimoni', [PenyewaController::class, 'testimoni'])->middleware('userAkses:penyewa')->name('testimoni');
     Route::put('/penyewa/testimoni/{id}/edit', [PenyewaController::class, 'updateTestimoni'])->middleware('userAkses:penyewa');
     Route::get('/penyewa/profil', [PenyewaController::class, 'profil'])->middleware('userAkses:penyewa')->name('profil');

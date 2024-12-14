@@ -77,7 +77,7 @@
               </td>
               <td class="px-6 py-4">
                   @if ($pembayaran->updated_at)
-                      Pembayaran  {{$pembayaran->status}} pada {{$pembayaran->updated_at}}
+                      Pembayaran  {{$pembayaran->status}} pada {{$pembayaran->updated_at->format('d-m-Y H:i')}}
                   @else
                       Pembayaran {{$pembayaran->status}}
                   @endif

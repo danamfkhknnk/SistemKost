@@ -84,7 +84,7 @@
                   {{$penghuni->nik ?? '-'}}
               </td>
               <td class="px-6 py-4">
-                  {{$penghuni->telepon ?? '-'}}
+                  {{$penghuni->user->telepon ?? '-'}}
               </td>
               <td class="px-6 py-4">
                   {{$penghuni->alamat ?? '-'}}
