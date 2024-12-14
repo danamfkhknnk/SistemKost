@@ -43,7 +43,7 @@
             </div>
           </div>
           @enderror
-          <input class="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="number" placeholder="Nomor Telepon" name="telepon" value="{{ old('telepon')}}" />
+          <input class="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="number" placeholder="Nomor Telepon" name="telepon" value="{{ old('telepon', '62') }}"  />
           @error('telepon')
           <div class="flex items-center p-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
             <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
