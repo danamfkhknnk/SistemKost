@@ -1,19 +1,41 @@
 @extends('Component.LayoutPenyewa')
 
 @section('content')
-<div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between">
-  <div class="flex">
-      <h2 class="uppercase text-xl p-2 font-bold">Selamat Datang </h2>    
-  </div>  
-  <div class="flex gap-2 p-2 justify-center flex-col text-justify">
-    <h1>
-      Kost Putra Tentrem Mulyo didirikan dengan tujuan memberikan solusi hunian nyaman dan terjangkau bagi para pelajar, mahasiswa, dan pekerja yang membutuhkan tempat tinggal di kawasan strategis. Terinspirasi oleh kebutuhan akan lingkungan yang aman, tenang, dan mendukung produktivitas, kost ini mulai beroperasi pada tahun 2015. Nama "Tentrem Mulyo" diambil dari filosofi Jawa yang berarti ketenangan dan kesejahteraan, mencerminkan harapan pemilik untuk menciptakan hunian yang tidak hanya menyediakan fasilitas fisik, tetapi juga suasana harmonis bagi para penghuninya.
-    </h1>
-    <h1>
-      Seiring berjalannya waktu, Kost Putra Tentrem Mulyo terus berkembang dan beradaptasi dengan kebutuhan penghuninya. Dari fasilitas dasar, kini kost ini telah dilengkapi dengan berbagai layanan modern seperti akses internet cepat, sistem keamanan 24 jam, dan area bersama untuk membangun komunitas penghuni yang erat. Melalui dedikasi terhadap kenyamanan dan pelayanan berkualitas, Kost Putra Tentrem Mulyo telah menjadi pilihan utama bagi mereka yang mencari tempat tinggal yang mendukung gaya hidup produktif dan serba praktis.
-    </h1>
-  </div>
-</div>
 
+<div class="flex rounded ">
+  <h2 class="uppercase text-xl pl-2 mb-2 font-bold">Selamat Datang, {{$user_nama}}</h2>
+</div>
+<div class="rounded">
+  <h2 class="uppercase text-md pl-2 mb-2 font-bold">Mohon Dibaca Peraturan Kost Tentrem Mulyo</h2>
+  <p class="pl-2 mb-2 text-justify text-md">
+    #Jangan lupa setiap keluar atau masuk gerbang kos agar ditutup kembali dan digrendel (tidak hanya penghuni kos, tetapi juga tamu penghuni kos) untuk menghindari pemulung masuk.
+  </p>
+  <p class="pl-2 mb-2 text-justify text-md">
+    #Jangan lupa mematikan kipas, AC, lampu, TV, atau air bila tidak digunakan.
+  </p>
+  <p class="pl-2 mb-2 text-justify text-md">
+    #Tidak diperbolehkan membawa hewan peliharaan ke dalam kamar atau area kos (untuk menghindari bulu dan bau kotorannya).
+  </p>
+  <p class="pl-2 mb-2 text-justify text-md">
+    #Boleh menerima tamu, tetapi tamu dilarang menginap (kecuali ada keperluan tertentu, harap menghubungi Ibu Kos terlebih dahulu).
+  </p>
+  <p class="pl-2 mb-2 text-justify text-md">
+    #Harap membersihkan dapur setelah selesai digunakan.
+  </p>
+  <p class="pl-2 mb-2 text-justify text-md">
+    #Jaga kebersihan kamar mandi.
+  </p>
+  <p class="pl-2 mb-2 text-justify text-md">
+    #Tidak diperbolehkan mengotori atau memaku tembok kos.
+  </p>
+  <p class="pl-2 mb-2 text-justify text-md">
+    #Area kos dan sampah harus dibersihkan setiap dua hari sekali.
+  </p>
+  <p class="pl-2 mb-2 text-justify text-md">
+    #Sprei akan diganti dengan yang bersih setiap bulan atau ketika ada penghuni baru.
+  </p>
+  <p class="pl-2 mb-2 text-justify text-md">
+    #Kebersihan kamar kos adalah tanggung jawab masing-masing penghuni (alat kebersihan sudah tersedia di kos).
+  </p>
 </div>
 @endsection

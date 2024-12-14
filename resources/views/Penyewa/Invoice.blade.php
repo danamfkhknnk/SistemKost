@@ -109,11 +109,11 @@
   <!-- Signature -->
   <div class="signature">
     <div>
-      <p>Penerima</p>
+      <p>{{$pembayaran->user->nama}}</p>
       <div class="line"></div>
     </div>
     <div>
-      <p>Pemberi</p>
+      <p>Pengelola Kost</p>
       <div class="line"></div>
     </div>
   </div>

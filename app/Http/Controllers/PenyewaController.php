@@ -17,9 +17,8 @@ use Illuminate\Support\Facades\Session;
 class PenyewaController extends Controller
 {
     function index(){ 
-
-        
-        return view('Penyewa.Dashboard');
+        $user_nama = Auth::user()->nama;
+        return view('Penyewa.Dashboard',compact('user_nama'));
     }
     function formkeluhan(){
         $user_id = Auth::user()->id;

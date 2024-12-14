@@ -17,23 +17,25 @@ use League\CommonMark\Extension\Attributes\Node\Attributes;
 class AdminController extends Controller
 {
     function dashboard(){
-        $user_nama = Auth::user()->nama;
         $jmlkamar = kamar::count();
         $kmrterisi = kamar::where('status', 'terisi')->count();
         $kmrtersedia = kamar::where('status', 'tersedia')->count();
-
+        $jmlselesai = Pembayaran::where('status', 'selesai')
+        ->get()
+        ->sum(function ($pembayaran) {
+            return $pembayaran->kamar->harga; // Mengambil harga dari relasi kamar
+        });
         $databyr = pembayaran::count();
         $byrselesai = pembayaran::where('status','selesai')->count();
-        // $jmlselesai = pembayaran::where('status','selesai')->sum('');
-
-        $dtpenghuni = penghuni::count();
-
+        $jmlakun = User::whereIn('role', [User ::ROLE_PENYEWA, User::ROLE_PUBLIK])->count();
+        $penghuni = User::whereIn('role', [User ::ROLE_PENYEWA])->count();
+        $dtpenghuni = User::whereIn('role', [User ::ROLE_PENYEWA])->get();
         $dtuser = User::count();
-
         $dtkeluhan = Keluhan::count();
         $klhnselesai = Keluhan::where('status','selesai')->count();
         $klhnpending = Keluhan::where('status','pending')->count();
-        return view ('Admin.Dashboard', compact('user_nama','jmlkamar','kmrterisi','kmrtersedia','databyr','byrselesai','dtpenghuni','dtuser','dtkeluhan','klhnselesai','klhnpending'));
+        $pembayaran = pembayaran::with('user')->where('status','pending')->get();
+        return view ('Admin.Dashboard', compact('jmlselesai','dtpenghuni','pembayaran','jmlakun','penghuni','jmlkamar','kmrterisi','kmrtersedia','databyr','byrselesai','dtuser','dtkeluhan','klhnselesai','klhnpending'));
     }
     function index (){
 
