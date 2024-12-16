@@ -26,6 +26,7 @@
             Harga : Rp.{{$kamar->harga}}/Bulan 
            </p>
            @if (Auth::check())
+           @if (Auth::user()->email_verified_at)
            @if (Auth::user()->role == 'publik')
            <button data-modal-target="large-modal-{{ $kamar->id }}" data-modal-toggle="large-modal-{{ $kamar->id }}" type="button" class="bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:bg-blue-600">
                Pemesanan
@@ -85,6 +86,11 @@
         @elseif (Auth::user()->role == 'penyewa' || Auth::user()->role == 'admin')
         <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:bg-blue-600" disabled>
           Pemesanan
+        </button>
+      @endif
+      @else
+      <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:bg-blue-600" disabled>
+        Konfirmasi Email Anda!!
       </button>
       @endif
             @else

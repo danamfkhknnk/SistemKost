@@ -9,6 +9,7 @@ use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PenyewaController;
 use App\Http\Controllers\PublikController;
 use App\Http\Controllers\SesiController;
+use App\Models\info;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 
@@ -16,8 +17,9 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/logout', [SesiController::class, 'logout'])->middleware('auth');
 
 Route::get('/email/verify', function () {
-    return view('Component.send_email');
-})->middleware('auth')->name('verification.notice');
+    $info = info::first();
+    return view('Component.send_email', compact('info'));
+})->name('verification.notice');
  
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();

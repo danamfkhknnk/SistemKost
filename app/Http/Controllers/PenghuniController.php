@@ -6,6 +6,7 @@ use App\Models\kamar;
 use App\Models\penghuni;
 use App\Models\testi;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -54,14 +55,17 @@ class PenghuniController extends Controller
     }
 
     function updatePenghuni(Request $request, $id){
-        $request->validate([
-            'tanggal_keluar' => 'nullable|date',
-        ]);
-
         $penghuni = Penghuni::findOrFail($id);
+
+        $request->validate([
+            'tgglkeluar' => 'required|date|after:' . Carbon::parse($penghuni->tgglmasuk)->toDateString(),
+        ], [
+            'tgglkeluar.after' => 'Tanggal jatuh tempo harus setelah tanggal masuk.',
+        ]);
+        
         $kamar = Kamar::find($penghuni->kamar_id);
         $role = User::find($penghuni->user_id);
-        $penghuni->update($request->all());
+        $penghuni->update(['tgglkeluar' => $request->tgglkeluar . '-' . date('d', strtotime($penghuni->tgglmasuk)),]);
         if ($kamar) {
             $kamar->status = 'tersedia';
             $kamar->save();

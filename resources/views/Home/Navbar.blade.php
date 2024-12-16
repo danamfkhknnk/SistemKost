@@ -11,47 +11,60 @@
 <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
   <nav>
     <ul class="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0">
-      <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="#tentang">Tentang</a></li>
-      <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="#kamar">Kamar</a></li>
-      <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="#testi">Testimoni</a></li>
-      <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2" href="#kontak">Kontak</a></li>
+      <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-primary/80" href="#tentang">Tentang</a></li>
+      <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-primary/80" href="#kamar">Kamar</a></li>
+      <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-primary/80" href="#testi">Testimoni</a></li>
+      <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-primary/80 lg:mb-0 mb-2" href="#kontak">Kontak</a></li>
     
 
       @if (Auth::check())
-      <li>
-              <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex w-full items-center justify-between py-1 px-2 bg-primary/80 font-semibold rounded-lg border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2 mr-0 lg:mr-2"> {{ Auth::user()->nama }}
+      <li>    
+        @if (Auth::user()->email_verified_at)
+              <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex text-secondary w-full items-center justify-between py-1 px-2 bg-primary/80 font-semibold rounded-lg border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2 mr-0 lg:mr-2"> {{ Auth::user()->nama }}
                 <svg class="w-2.5 h-2.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                 </svg>
               </button>
-                <!-- Dropdown menu -->
-                <div id="dropdownNavbar" class="z-10 hidden font-semibold bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
-                  @if(Auth::user()->role == 'penyewa')
-                    <div>
-                      <a href="{{url('/penyewa')}}" class="block px-8 py-1 text-sm bg-primary/20 font-semibold rounded-lg border-b-2 border-transparent hover:border-indigo-400">Dashboard</a>
-                    </div>
-                    <div>
-                      <a href="{{url('/logout')}}" class="block px-8 py-1 text-sm bg-primary/20 font-semibold rounded-lg border-b-2 border-transparent hover:border-indigo-400">Keluar</a>
+              <div id="dropdownNavbar" class="z-10 text-secondary hidden font-semibold  rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
+                @if(Auth::user()->role == 'penyewa')
+                  <div>
+                    <a href="{{url('/penyewa')}}" class="block px-8 py-1 text-sm  bg-primary/80 text-secondary font-semibold rounded-lg border-b-2 border-transparent hover:border-indigo-400">Dashboard</a>
                   </div>
-                  @elseif(Auth::user()->role == 'admin')
                   <div>
-                      <a href="{{url('/admin')}}" class="block px-8 py-1 text-sm bg-primary/20 font-semibold rounded-lg border-b-2 border-transparent hover:border-indigo-400">Dashboard</a>
-                  </div> 
-                  <div>
-                    <a href="{{url('/logout')}}" class="block px-8 py-1 text-sm bg-primary/20 font-semibold rounded-lg border-b-2 border-transparent hover:border-indigo-400">Keluar</a>
-                </div> 
-                  @else
-                  <div>
-                      <a href="{{url('/logout')}}" class="block px-8 py-1 text-sm bg-primary/20 font-semibold rounded-lg border-b-2 border-transparent hover:border-indigo-400">Keluar</a>
-                  </div>
-                  @endif
+                    <a href="{{url('/logout')}}" class="block px-8 py-1 text-sm bg-primary/80 text-secondary font-semibold rounded-lg border-b-2 border-transparent hover:border-indigo-400">Keluar</a>
                 </div>
-        </li>   
+                @elseif(Auth::user()->role == 'admin')
+                <div>
+                    <a href="{{url('/admin')}}" class="block px-8 py-1 text-sm bg-primary/80 text-secondary font-semibold rounded-lg border-b-2 border-transparent hover:border-indigo-400">Dashboard</a>
+                </div> 
+                <div>
+                  <a href="{{url('/logout')}}" class="block px-8 py-1 text-sm bg-primary/80 text-secondary font-semibold rounded-lg border-b-2 border-transparent hover:border-indigo-400">Keluar</a>
+                </div> 
+                @else
+                <div>
+                    <a href="{{url('/logout')}}" class="block px-8 py-1 text-sm bg-primary/80 text-secondary font-semibold rounded-lg border-b-2 border-transparent hover:border-indigo-400">Keluar</a>
+                </div>
+                @endif
+              </div>
+          
+            
         @else
-        <li class="text-center"><a class="py-1 px-2 bg-primary/80 font-semibold rounded-lg block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2 mr-0 lg:mr-2" href="{{ url('/register')}}">Registrasi</a></li>
-        <li class="text-center"><a class="py-1 px-2 bg-primary/80 font-semibold rounded-lg block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2" href="{{ url('/login')}}">Login</a></li>
+        <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex text-secondary w-full items-center justify-between py-1 px-2 bg-primary/80 font-semibold rounded-lg border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2 mr-0 lg:mr-2"> Konfirmasi Email Anda!
+          <svg class="w-2.5 h-2.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+          </svg>
+        </button>
+        <div id="dropdownNavbar" class="z-10 text-secondary hidden font-semibold  rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
+            <div>
+              <a href="{{url('/logout')}}" class="block px-8 py-1 text-sm bg-primary/80  font-semibold rounded-lg border-b-2 border-transparent hover:border-indigo-400">Keluar</a>
+          </div>
+        </div>
         @endif
-
+      </li>   
+      @else
+      <li class="text-center text-secondary"><a class="py-1 px-2 bg-primary/80 font-semibold rounded-lg block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2 mr-0 lg:mr-2" href="{{ url('/register')}}">Registrasi</a></li>
+      <li class="text-center text-secondary"><a class="py-1 px-2 bg-primary/80 font-semibold rounded-lg block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2" href="{{ url('/login')}}">Login</a></li>
+      @endif
     </ul>
   </nav>
 </div>
