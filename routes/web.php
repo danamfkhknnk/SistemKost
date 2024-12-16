@@ -16,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/logout', [SesiController::class, 'logout'])->middleware('auth');
 
+
+Route::get('/email/forgot', [SesiController::class, 'forgot'])->name('password.forgot');
+Route::post('/forgot-password', [SesiController::class, 'sendEmail'])->name('password.email');
+Route::get('/reset-password/{token}', [SesiController::class, 'resetPassword'])->name('password.reset');
+Route::post('/reset-password', [SesiController::class, 'updatePassword'])->name('password.update');
+
+
 Route::get('/email/verify', function () {
     $info = info::first();
     return view('Component.send_email', compact('info'));

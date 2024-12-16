@@ -13,10 +13,12 @@
           <div class="md:w-1/3 max-w-sm">
             <img src="{{ asset('home/' . $info->logo) }}"  class="w-100">
           </div>
-        <form class="md:w-1/3 max-w-sm" action="{{url('/aksilogin')}}" method="POST">
-          @csrf          
+        <form class="md:w-1/3 max-w-sm" method="POST" action="{{ route('password.update') }}">
+            @csrf
+            <input type="hidden" name="token" value="{{ $token }}">
+            <input type="hidden" name="email" value="{{ $email }}">      
           <div class="text-center md:text-left">
-            <h3 class="mr-1 mb-2 font-semibold"> Silahkan Login Dengan Email Terverifikasi</h3>
+            <h3 class="mr-1 mb-2 font-semibold">Masukkan Password Baru Anda</h3>
             @if (Session::has('message'))
             <div class="flex items-center p-2 mb-2 text-sm text-blue-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" >
               <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -41,27 +43,15 @@
             @endif
           </div>
           
-          <input class="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" type="text" placeholder="Email Address" name="email" value="{{ old('email')}}" autoFocus />
-          <input class="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="password" placeholder="Password" name="password" />
-          
-          <div class=" text-center md:text-left mt-2">
-            <span class="pt-1 font-semibold underline text-sm">Belum Punya Akun ? <a href="{{url('/register')}}" class="uppercase">Register</a></span>
-          </div>
-          <div class=" text-center md:text-left mt-2">
-            <span class="pt-1 font-semibold underline text-sm">Lupa Password ? <a href="{{route('password.forgot')}}" class="uppercase">Reset Password</a></span>
-          </div>
-          
+          <input class="text-sm w-full px-4 mb-2 py-2 border border-solid border-gray-300 rounded" type="password" placeholder="Password Baru" name="password" value="{{ old('password')}}" autoFocus required />
+          <input class="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" type="password" placeholder="Konfirmasi Password Baru" name="password_confirmation" value="{{ old('password')}}" required />
           <div class="text-center md:text-left">
             <button class="mt-2 bg-primary hover:bg-primary/50 px-6 py-2 text-white uppercase rounded text-xs tracking-wider" name="submit" type="submit">
-              Login
+              Reset
             </button>
-            <a class="mt-2 bg-primary hover:bg-primary/50 px-6 py-2 text-white uppercase rounded text-xs tracking-wider" href="{{url('/')}}">
-             Kembali
-            </a>
           </div> 
         </form>
       </section>
-    
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init();
@@ -71,3 +61,36 @@
    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 </body>
 </html>
+{{-- <body>
+    <div class="container">
+        <h1>Reset Password</h1>
+        <form method="POST" action="{{ route('password.update') }}">
+            @csrf
+            <input type="hidden" name="token" value="{{ $token }}">
+            <input type="hidden" name="email" value="{{ $email }}">
+    
+            <div class="form-group">
+                <label for="password">New Password</label>
+                <input id="password" type="password" class="form-control" name="password" required>
+                @error('password')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+    
+            <div class="form-group">
+                <label for="password-confirm">Confirm Password</label>
+                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                @error('password_confirmation')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+    
+            <div class="col-md-6 offset-md-4">
+                <button type="submit" class="btn btn-primary">
+                    Reset Password
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html> --}}

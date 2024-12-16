@@ -13,10 +13,10 @@
           <div class="md:w-1/3 max-w-sm">
             <img src="{{ asset('home/' . $info->logo) }}"  class="w-100">
           </div>
-        <form class="md:w-1/3 max-w-sm" action="{{url('/aksilogin')}}" method="POST">
+        <form class="md:w-1/3 max-w-sm" method="POST" action="{{ route('password.email') }}"">
           @csrf          
           <div class="text-center md:text-left">
-            <h3 class="mr-1 mb-2 font-semibold"> Silahkan Login Dengan Email Terverifikasi</h3>
+            <h3 class="mr-1 mb-2 font-semibold">Masukkan Email Anda</h3>
             @if (Session::has('message'))
             <div class="flex items-center p-2 mb-2 text-sm text-blue-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" >
               <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -42,18 +42,9 @@
           </div>
           
           <input class="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" type="text" placeholder="Email Address" name="email" value="{{ old('email')}}" autoFocus />
-          <input class="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="password" placeholder="Password" name="password" />
-          
-          <div class=" text-center md:text-left mt-2">
-            <span class="pt-1 font-semibold underline text-sm">Belum Punya Akun ? <a href="{{url('/register')}}" class="uppercase">Register</a></span>
-          </div>
-          <div class=" text-center md:text-left mt-2">
-            <span class="pt-1 font-semibold underline text-sm">Lupa Password ? <a href="{{route('password.forgot')}}" class="uppercase">Reset Password</a></span>
-          </div>
-          
           <div class="text-center md:text-left">
             <button class="mt-2 bg-primary hover:bg-primary/50 px-6 py-2 text-white uppercase rounded text-xs tracking-wider" name="submit" type="submit">
-              Login
+              Kirim Link
             </button>
             <a class="mt-2 bg-primary hover:bg-primary/50 px-6 py-2 text-white uppercase rounded text-xs tracking-wider" href="{{url('/')}}">
              Kembali
@@ -61,7 +52,6 @@
           </div> 
         </form>
       </section>
-    
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init();
