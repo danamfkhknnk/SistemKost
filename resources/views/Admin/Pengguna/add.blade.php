@@ -23,8 +23,22 @@
           </div>
     @enderror
   <div class="relative z-0 w-full mb-4 group">
+    <label for="telepon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor Telepon</label>
+    <input id="telepon" class="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" type="number" placeholder="Nomor Telepon" name="telepon" value="{{ old('telepon')}}" />
+    @error('telepon')
+          <div class="flex items-center p-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+            <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+            </svg>
+            <span class="sr-only">Info</span>
+            <div>
+              <span class="font-medium">{{$message}}</span>
+            </div>
+          </div>
+    @enderror
+  <div class="relative z-0 w-full mb-4 group">
     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-    <input id="email" class="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded " type="text" placeholder="Alamat Email" name="email" value="{{ old('email')}}" />
+    <input id="email" class="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded " type="email" placeholder="Alamat Email" name="email" value="{{ old('email')}}" />
     @error('email')
           <div class="flex items-center p-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
             <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -39,7 +53,7 @@
   </div>
   <div class="relative z-0 w-full mb-5 group">
     <label for="role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
-    <select id="role" name="role" class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" disabled>
+    <select id="role" name="role" class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
       <option value="admin">Admin</option>
     </select>
   </div>

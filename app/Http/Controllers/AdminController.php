@@ -63,18 +63,22 @@ class AdminController extends Controller
     }
 
 
-    function tambahPengguna( Request $request){
+    public function tambahPengguna(Request $request)
+    {
+        // Debugging: Tampilkan data yang diterima
+    
         $request->validate([
             'nama' => 'required|string|max:255|unique:users,nama',
             'email' => 'required|email|unique:users,email',
+            'telepon' => 'required|max:15|unique:users,telepon',
             'role' => 'required|in:publik,penghuni,admin',
             'password' => 'required|string|min:8',
         ]);
-
-        User::create($request->all());
-
-        Session::flash('message','Tambah Data Berhasil');
-
+    
+        $user = User::create($request->all());
+        $user->sendEmailVerificationNotification();
+    
+        Session::flash('message', 'Tambah Data Berhasil');
         return redirect()->route('pengguna');
     }
 

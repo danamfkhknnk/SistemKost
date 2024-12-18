@@ -30,6 +30,7 @@
                 <th>Kamar</th>
                 <th>Jumlah</th>
                 <th>Status</th>
+                <th>Keperluan</th>
                 <th>Tanggal</th>
             </tr>
         </thead>
@@ -40,6 +41,7 @@
                     <td>{{ $item->kamar->nokamar }}</td> <!-- Ganti dengan relasi jika ada -->
                     <td>Rp {{ number_format($item->kamar->harga, 0, ',', '.') }}</td>
                     <td>{{ $item->status }}</td>
+                    <td>Pembayaran {{$item->tipe}}</td>
                     <td>{{ $item->updated_at->format('d-m-Y H:i') }}</td>
                 </tr>
             @endforeach
