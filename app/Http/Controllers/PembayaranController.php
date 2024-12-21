@@ -30,6 +30,21 @@ class PembayaranController extends Controller
         ]);
         
         $penghuni = Penghuni::find($request->penghuni_id);
+
+        // Ambil bulan dan tahun dari jatuhtempo
+        $bulan = Carbon::parse($request->jatuhtempo)->format('m');
+        $tahun = Carbon::parse($request->jatuhtempo)->format('Y');
+
+        // Cek apakah sudah ada pembayaran untuk bulan dan tahun yang sama
+        $existingPayment = Pembayaran::where('penghuni_id', $request->penghuni_id)
+            ->whereMonth('jatuhtempo', $bulan)
+            ->whereYear('jatuhtempo', $tahun)
+            ->first();
+
+        if ($existingPayment) {
+            return redirect()->back()->withErrors(['message' => 'Pembayaran untuk bulan dan tahun ini sudah ada.']);
+        }
+    
         $pembayaran = Pembayaran::create([
             'penghuni_id' => $request->penghuni_id,
             'jatuhtempo' => $request->jatuhtempo . '-' . date('d', strtotime($penghuni->tgglmasuk)),

@@ -10,7 +10,6 @@ class info extends Model
         'tt',
         'wa',
         'fb',
-        'tt',
         'logo',
         'galeri',
         'alamat',
