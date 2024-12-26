@@ -5,7 +5,7 @@
     <div class="bg-white p-6 rounded-lg shadow-lg">
         <h1 class="text-3xl text-center font-bold mb-4 text-blue-500">Konfirmasi Pemesanan</h1>
         
-        <div class="grid lg:grid-cols-2 gap-2 justify-items-center">
+        <div class="grid grid-cols-2 gap-2 justify-items-center">
             @foreach (explode(',', $pembayaran->kamar->gambarkamar) as $image)
               <img src="{{ asset('gambarkamar/' . $image) }}" alt="Gambar kamar" class="rounded-md shadow-md" width="300px">
             @endforeach

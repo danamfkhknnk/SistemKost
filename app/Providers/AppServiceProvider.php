@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
         View::composer('Home.Layout', function ($view) {
             $info = info::first(); // Ambil data info
             $poin = tentang::all(); // Ambil semua data tentang
-            $kamar = kamar::where('status', 'tersedia')->get(); // Ambil semua data tentang
+            $kamar = kamar::where('status', 'tersedia')->orderBy('nokamar','asc')->get(); // Ambil semua data tentang
             $testi = testi::with('user')->whereNotNull('testi')->get();
             $bayar =  pembayaran::all();
             $view->with(compact('info','bayar','poin','kamar', 'testi'));

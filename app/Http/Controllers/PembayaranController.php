@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Session;
 class PembayaranController extends Controller
 {
     public function index(){
-        $pembayaran = pembayaran::with('user','penghuni')->orderBy('created_at', 'desc')->get();
-        return view('Admin.Pembayaran.Pembayaran',compact('pembayaran'));
+        $pembayarans = pembayaran::with('user','penghuni')->orderBy('penghuni_id', 'desc')->simplePaginate(10);
+        return view('Admin.Pembayaran.Pembayaran',compact('pembayarans'));
     }
 
     public function formPembayaran()
@@ -73,6 +73,7 @@ class PembayaranController extends Controller
                 'first_name' => $penghuni->user->nama,
                 'email' => $penghuni->user->email,
             ),
+            
         );
 
         // Mendapatkan Snap Token

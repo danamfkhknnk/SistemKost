@@ -64,7 +64,7 @@
           </tr>
       </thead>
       <tbody>
-        @foreach ($pembayaran as $pembayaran)
+        @foreach ($pembayarans as $pembayaran)
           <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
               <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                  {{$pembayaran->id}}
@@ -90,7 +90,7 @@
               </td>
               <td class="px-6 py-4">
                   @if($pembayaran->updated_at)
-                  Tidak Dapat Dihapus
+                  -
                   @else
                   <div class="flex">
                     <a href={{'https://wa.me/'. $pembayaran->user->telepon. '?text=Mohon%20segera%20bayar'}} >
@@ -108,10 +108,12 @@
                   
                   @endif
               </td>
-
           </tr>
           @endforeach
       </tbody>
-  </table>
+  </table>  
+</div>
+<div class="pagination">
+  {{ $pembayarans->links() }}
 </div>
 @endsection

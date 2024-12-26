@@ -21,7 +21,7 @@
           <div class="bg-white shadow-md rounded-lg p-2">
             <h2 class="text-xl font-semibold">Jumlah Penghuni</h2>
             <p class="text-3xl font-bold text-red-600">{{$penghuni}}</p>
-            <p class="text-md font-sm ">Dari {{$jmlakun}} Akun</p>
+            <p class="text-md font-sm ">Dari {{$jmlakun}} Pengguna</p>
           </div>
        </div>
        <div class="grid md:grid-cols-2 grid-cols-1 gap-4 mb-4">

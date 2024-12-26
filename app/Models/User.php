@@ -17,6 +17,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     const ROLE_PENYEWA = 'penyewa';
     const ROLE_PUBLIK = 'publik';
+    const ROLE_ADMIN = 'admin';
 
     /**
      * The attributes that are mass assignable.

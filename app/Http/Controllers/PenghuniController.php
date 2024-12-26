@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Session;
 class PenghuniController extends Controller
 {
     function index(){
-        $penghuni = penghuni::with('user','kamar')->orderBy('created_at', 'desc')->get();
-        return view('Admin.Penghuni.Penghuni',['penghuni'=> $penghuni]);
+        $penghunis = penghuni::with('user','kamar')->orderBy('created_at', 'desc')->simplePaginate(10);
+        return view('Admin.Penghuni.Penghuni', compact('penghunis'));
     }
     function formPenghuni(){
         $users = User::whereIn('role', [User::ROLE_PUBLIK])->get();

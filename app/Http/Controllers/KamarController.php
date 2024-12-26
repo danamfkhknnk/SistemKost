@@ -10,11 +10,10 @@ use Illuminate\Support\Facades\Storage;
 class KamarController extends Controller
 {
     function index(){
-        $kamars=kamar::get()->all();
+        
+        $kamars=kamar::orderBy('id', 'asc')->simplePaginate(5);
         
         return view ('Admin.Kamar.Kamar', ['kamars' => $kamars]);
-
-
     }
 
     function formKamar(){

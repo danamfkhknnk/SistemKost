@@ -19,7 +19,7 @@
           <div class="text-center md:text-left">
             <h3 class="mr-1 mb-2 font-semibold">Silahkan Registrasi</h3>
           </div>
-          <input class="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" type="text" placeholder="Nama Lengkap" name="nama" value="{{ old('nama')}}" autoFocus />
+          <input class="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" type="text" placeholder="Nama" name="nama" value="{{ old('nama')}}" autoFocus />
           @error('nama')
           <div class="flex items-center p-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
             <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">

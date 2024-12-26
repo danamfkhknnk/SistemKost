@@ -91,6 +91,7 @@ class PublikController extends Controller
     }
 
     public function berhasil(Request $request, $id){
+        $user_nama = Auth::user()->nama;
         $pembayaran = Pembayaran::find($request->id);
         $pembayaran->status = 'selesai';
         $pembayaran->save();
@@ -116,7 +117,7 @@ class PublikController extends Controller
         $user->role = 'penyewa';
         $user->save();
 
-        return view('Penyewa.Dashboard');
+        return view('Penyewa.Dashboard', compact('user_nama'));
     }
     
 

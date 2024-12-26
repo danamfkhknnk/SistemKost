@@ -39,9 +39,11 @@ class AdminController extends Controller
     }
     function index (){
 
-        $users=User::get()->all();
+        $users=User::whereIn('role', [User ::ROLE_PENYEWA, User::ROLE_PUBLIK])->simplePaginate(10);
+
+        $admin = User::whereIn('role', [User :: ROLE_ADMIN])->get();
         
-        return view ('Admin.Pengguna.pengguna', ['users' => $users]);
+        return view ('Admin.Pengguna.pengguna', compact('users', 'admin'));
     }
 
     function regis( Request $request){
@@ -53,7 +55,7 @@ class AdminController extends Controller
         ]);
 
         $user = User::create( attributes : $request->only('nama','email','password','telepon'));
-        //event(new Registered($user));
+        event(new Registered($user));
         $user->sendEmailVerificationNotification();
        
         // // Flash message untuk sukses
@@ -65,7 +67,6 @@ class AdminController extends Controller
 
     public function tambahPengguna(Request $request)
     {
-        // Debugging: Tampilkan data yang diterima
     
         $request->validate([
             'nama' => 'required|string|max:255|unique:users,nama',
@@ -76,6 +77,7 @@ class AdminController extends Controller
         ]);
     
         $user = User::create($request->all());
+        event(new Registered($user));
         $user->sendEmailVerificationNotification();
     
         Session::flash('message', 'Tambah Data Berhasil');

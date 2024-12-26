@@ -14,7 +14,6 @@ class penghuni extends Model
         'kamar_id',
         'tgglmasuk',
         'tgglkeluar',
-        'foto',
 
     ];
 

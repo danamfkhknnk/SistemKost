@@ -75,11 +75,11 @@ class PenyewaController extends Controller
 
         $data = $request->all();
 
-        if ($image = $request->file('foto')) {
-            $foto = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move(public_path('foto'), $foto);
-            $data['foto'] = "$foto";
-        }
+        // if ($image = $request->file('foto')) {
+        //     $foto = date('YmdHis') . "." . $image->getClientOriginalExtension();
+        //     $image->move(public_path('foto'), $foto);
+        //     $data['foto'] = "$foto";
+        // }
 
         $user = User::findOrFail(Auth::id());
         $user->nama = $request->nama; // Update nama

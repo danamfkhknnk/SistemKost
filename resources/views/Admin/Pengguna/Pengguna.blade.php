@@ -3,18 +3,8 @@
 @section('content')
 
 <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-2">
-
   <div class="flex">
-      <h2 class="uppercase text-xl p-2 font-bold">Data Pengguna</h2> 
-      {{-- <label for="table-search" class="sr-only">Search</label> --}}
-    {{-- <div class="relative mt-1">
-      <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
-          <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-          </svg>
-      </div>
-      <input type="text" id="table-search" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-60 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for items">
-    </div> --}}
+      <h2 class="uppercase text-xl p-2 font-bold">Data Admin</h2> 
   </div>
   <div class="flex gap-4">
     <div class="pt-2">
@@ -34,16 +24,14 @@
         </div>
         @endif
     </div>
-  </div>
-     
-   
+  </div>  
 </div>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
   <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
       <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
             <th scope="col" class="px-6 py-3">
-                Id Pengguna
+                Id
             </th>
             <th scope="col" class="px-6 py-3">
                 Nama
@@ -52,47 +40,42 @@
                 Email
             </th>
             <th scope="col" class="px-6 py-3">
-                Password
+                Verifikasi Email
             </th>
             <th scope="col" class="px-6 py-3">
                 Role
             </th>
-            
             <th scope="col" class="px-6 py-3">
                 Action
             </th>
         </tr>
     </thead>
     <tbody>
-        @foreach ($users as $users)
+        @foreach ($admin as $admin)
         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-               {{ $users->id}}
+               {{ $admin->id}}
             </th>
             <td class="px-6 py-4">
-                {{ $users->nama}}
+                {{ $admin->nama}}
             </td>
             <td class="px-6 py-4">
-                {{ $users->email}}
+                {{ $admin->email}}
             </td>
             <td class="px-6 py-4">
-                {{$users->password}}
+                {{$admin->email_verified_at ??  'Belum'}}
             </td>
             
             <td class="px-6 py-4">
-                {{$users->role}}
+                {{$admin->role}}
             </td>
-           
             <td class="flex px-6 py-4">
-              @if ($users->role == 'penyewa')
-                Tidak Dapat Dihapus
-              @else
-              <a href={{url('admin/pengguna/'.$users->id.'/delete')}} class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+              <a href={{url('admin/pengguna/'.$admin->id.'/delete')}} class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                 <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                 <path fill-rule="evenodd" d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/>
               </svg>
               </a>
-              @endif
+             
                 
             </td>
         </tr>
@@ -100,5 +83,63 @@
 
       </tbody>
   </table>
+</div>
+
+
+
+<div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-2 pt-4">
+  <div class="flex">
+      <h2 class="uppercase text-xl p-2 font-bold">Data Pengguna</h2> 
+  </div>
+</div>
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+            <th scope="col" class="px-6 py-3">
+                Id
+            </th>
+            <th scope="col" class="px-6 py-3">
+                Nama
+            </th>
+            <th scope="col" class="px-6 py-3">
+                Email
+            </th>
+            <th scope="col" class="px-6 py-3">
+                Verifikasi Email
+            </th>
+            <th scope="col" class="px-6 py-3">
+                Role
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($users as $user)
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+               {{ $user->id}}
+            </th>
+            <td class="px-6 py-4">
+                {{ $user->nama}}
+            </td>
+            <td class="px-6 py-4">
+                {{ $user->email}}
+            </td>
+            <td class="px-6 py-4">
+                {{$user->email_verified_at ??  'Belum'}}
+            </td>
+            
+            <td class="px-6 py-4">
+                {{$user->role}}
+            </td>
+        </tr>
+        @endforeach
+
+      </tbody>
+  </table>
+  <div class="pagination">
+    {{ $users->links() }}
+  </div>
 </div>
 @endsection

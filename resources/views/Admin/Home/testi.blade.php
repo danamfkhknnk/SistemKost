@@ -34,7 +34,7 @@
                     {{$testi->user->nama}}
                 </td>
                 <td class="px-6 py-4">
-                   {{$testi->testi}}
+                   {{$testi->testi ?? '-' }}
                 </td>
 
             </tr>

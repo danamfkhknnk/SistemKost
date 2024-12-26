@@ -76,7 +76,7 @@
                   {{$kamar->status}}
               </td>
               <td class="px-6 py-4">
-                <div class="grid lg:grid-cols-3">
+                <div class="grid lg:grid-cols-4 gap-1">
                     @foreach (explode(',', $kamar->gambarkamar) as $image)
                     <img src="{{ asset('gambarkamar/' . $image) }}" alt="Gambar Kamar" width="150px">
                 @endforeach
@@ -100,5 +100,8 @@
           @endforeach
       </tbody>
   </table>
+  <div class="pagination">
+    {{ $kamars->links() }}
+  </div>
 </div>
 @endsection

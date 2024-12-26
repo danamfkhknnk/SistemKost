@@ -6,6 +6,7 @@
           Nikmati kenyamanan tinggal di Kost Putra Tentrem Mulyo dengan fasilitas lengkap dan harga terjangkau. Tersedia pilihan kamar standar dan eksklusif yang siap mendukung kebutuhan Anda. Hubungi kami sekarang untuk informasi lebih lanjut dan reservasi!
         </p>
       </div>
+      @if (!$kamar)
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
         @foreach ($kamar as $kamar)
         <div class="bg-white rounded-lg shadow-md p-4">            
@@ -49,9 +50,9 @@
                   </div>
                   <!-- Modal body -->
                   <div class="p-3">
-                    <div class="grid lg:grid-cols-2 gap-2">
+                    <div class="grid grid-cols-2  gap-2">
                       @foreach (explode(',', $kamar->gambarkamar) as $image)
-                        <img src="{{ asset('gambarkamar/' . $image) }}" alt="Gambar kamar" class="rounded-md">
+                        <img src="{{ asset('gambarkamar/' . $image) }}" alt="Gambar kamar" height="150px" class="rounded-md">
                       @endforeach
                     </div>
                     <h2 class="font-bold text-xl">Fasilitas Kamar</h2>                    
@@ -102,6 +103,12 @@
          </div>
         @endforeach
       </div>
+      @else
+      <div class="text-center mb-4 max-w-[700px] mx-auto">
+        <h1 class="text-xl font-semibold">Maaf, 19 Kamar Telah Terisi Semua</h1>
+        
+      </div>
+      @endif
 
       
       
