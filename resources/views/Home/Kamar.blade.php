@@ -6,7 +6,7 @@
           Nikmati kenyamanan tinggal di Kost Putra Tentrem Mulyo dengan fasilitas lengkap dan harga terjangkau. Tersedia pilihan kamar standar dan eksklusif yang siap mendukung kebutuhan Anda. Hubungi kami sekarang untuk informasi lebih lanjut dan reservasi!
         </p>
       </div>
-      @if (!$kamar)
+      @if ($kamar)
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
         @foreach ($kamar as $kamar)
         <div class="bg-white rounded-lg shadow-md p-4">            
@@ -106,11 +106,7 @@
       @else
       <div class="text-center mb-4 max-w-[700px] mx-auto">
         <h1 class="text-xl font-semibold">Maaf, 19 Kamar Telah Terisi Semua</h1>
-        
       </div>
       @endif
-
-      
-      
     </section>
   </div>

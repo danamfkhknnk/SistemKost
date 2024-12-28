@@ -81,8 +81,19 @@ class HomeController extends Controller
 
     
     public function testi(){
-        $testi = testi::with('user')->get();
-        return view('Admin.Home.testi', compact('testi'));
+        $testies = testi::with('user')->simplePaginate(10);
+        return view('Admin.Home.testi', compact('testies'));
+    }
+    public function deleteTesti($id){
+        
+        $testimoni = testi::find($id);
+
+        $testimoni-> testi = null;
+        $testimoni->save();
+
+        Session::flash('message', 'Update Data Berhasil');
+        
+        return redirect()->route('testi');
     }
 
     public function tentang(){

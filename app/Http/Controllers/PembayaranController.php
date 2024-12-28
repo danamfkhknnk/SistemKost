@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Session;
 class PembayaranController extends Controller
 {
     public function index(){
-        $pembayarans = pembayaran::with('user','penghuni')->orderBy('penghuni_id', 'desc')->simplePaginate(10);
+        $pembayarans = pembayaran::with('user','penghuni')->orderBy('penghuni_id', 'asc')->simplePaginate(10);
         return view('Admin.Pembayaran.Pembayaran',compact('pembayarans'));
     }
 

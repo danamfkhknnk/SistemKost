@@ -56,11 +56,10 @@ class KamarController extends Controller
         $request->validate([
             'tipe' => 'required|in:AC,Kipas Angin',
             'harga' => 'required|max:12',
-            // 'status' => 'required|in:tersedia,terisi',
             'gambarkamar.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
 
         ]);
-        $kamars = $request->only(['tipe', 'harga', 'status']); // Ambil hanya field yang diperlukan
+        $kamars = $request->only(['tipe', 'harga']); // Ambil hanya field yang diperlukan
         // Temukan data kamar berdasarkan ID
         $kamar = Kamar::findOrFail($id);
         // Proses upload gambar
@@ -86,6 +85,7 @@ class KamarController extends Controller
         }
         // Perbarui data kamar di database
         $kamar->update($kamars);
+        
         Session::flash('message','Update Data Berhasil');
         return redirect()->route('kamar');
     }

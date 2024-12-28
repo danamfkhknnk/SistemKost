@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Session;
 class KeluhanController extends Controller
 {
     function index(){
-
         $keluhan = Keluhan::with('user')->get();
         return view('Admin.Keluhan.Keluhan',['keluhan'=> $keluhan]);
     }

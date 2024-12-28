@@ -65,7 +65,7 @@ class PenyewaController extends Controller
     {
         $request->validate([
             'nama' => 'required|string|max:255',
-            'nik' => 'required|string|max:20',
+            'nik' => 'required|string|unique:penghunis,nik|max:20',
             'telepon' => 'required|max:15',
             'alamat' => 'required|string|max:255',
             'foto.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',

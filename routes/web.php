@@ -85,6 +85,7 @@ Route::middleware(['auth','verified'])->group(function(){
     Route::get('/admin/publik/informasi/{id}/edit', [HomeController::class, 'informasi'])->middleware('userAkses:admin')->name('info');
     Route::put('/admin/publik/informasi/{id}/edit', [HomeController::class, 'updateinformasi'])->middleware('userAkses:admin');
     Route::get('/admin/publik/testi', [HomeController::class, 'testi'])->middleware('userAkses:admin')->name('testi');
+    Route::patch('/admin/publik/testi/{id}/delete', [HomeController::class, 'deleteTesti'])->middleware('userAkses:admin');
     Route::get('/admin/publik/tentang', [HomeController::class, 'tentang'])->middleware('userAkses:admin')->name('tentang');
     Route::post('/admin/publik/tentang/edit', [HomeController::class, 'updatetentang'])->middleware('userAkses:admin');
 
