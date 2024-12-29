@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\kamar;
 use App\Models\Keluhan;
+use App\Models\laporan;
 use App\Models\pembayaran;
 use App\Models\penghuni;
 use App\Models\User;
@@ -20,13 +21,16 @@ class AdminController extends Controller
         $jmlkamar = kamar::count();
         $kmrterisi = kamar::where('status', 'terisi')->count();
         $kmrtersedia = kamar::where('status', 'tersedia')->count();
-        $jmlselesai = Pembayaran::where('status', 'selesai')
+        $jmlmasuk = laporan::where('tipe', 'masuk')
         ->get()
-        ->sum(function ($pembayaran) {
-            return $pembayaran->kamar->harga; // Mengambil harga dari relasi kamar
-        });
-        $databyr = pembayaran::count();
-        $byrselesai = pembayaran::where('status','selesai')->count();
+        ->sum('harga');
+        $jmlkeluar = laporan::where('tipe', 'keluar')
+        ->get()
+        ->sum('harga');
+
+        $jml = $jmlmasuk - $jmlkeluar;
+
+        $databyr = laporan::count();
         $jmlakun = User::whereIn('role', [User ::ROLE_PENYEWA, User::ROLE_PUBLIK])->count();
         $penghuni = User::whereIn('role', [User ::ROLE_PENYEWA])->count();
         $dtpenghuni = User::whereIn('role', [User ::ROLE_PENYEWA])->get();
@@ -35,7 +39,7 @@ class AdminController extends Controller
         $klhnselesai = Keluhan::where('status','selesai')->count();
         $klhnpending = Keluhan::where('status','pending')->count();
         $pembayaran = pembayaran::with('user')->where('status','pending')->get();
-        return view ('Admin.Dashboard', compact('jmlselesai','dtpenghuni','pembayaran','jmlakun','penghuni','jmlkamar','kmrterisi','kmrtersedia','databyr','byrselesai','dtuser','dtkeluhan','klhnselesai','klhnpending'));
+        return view ('Admin.Dashboard', compact('jml','dtpenghuni','pembayaran','jmlakun','penghuni','jmlkamar','kmrterisi','kmrtersedia','databyr','dtuser','dtkeluhan','klhnselesai','klhnpending'));
     }
     function index (){
 

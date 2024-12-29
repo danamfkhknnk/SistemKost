@@ -51,7 +51,7 @@
                   {{$pembayaran->kamar->nokamar}}
               </td>
               <td class="px-6 py-4">
-                 {{$pembayaran->kamar->harga}}
+                 {{number_format($pembayaran->kamar->harga, 0, ',', '.')}}
               </td>
               <td class="px-6 py-4">
                   {{$pembayaran->jatuhtempo ?? 'Pembayaran Pertama'}}

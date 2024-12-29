@@ -67,7 +67,7 @@
                  {{$kamar->nokamar}}
               </th>
               <td class="px-6 py-4">
-                  {{$kamar->harga}}
+                  {{number_format($kamar->harga, 0, ',', '.')}}
               </td>
               <td class="px-6 py-4">
                  {{$kamar->tipe}}

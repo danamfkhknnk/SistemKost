@@ -103,7 +103,7 @@
 
   <!-- Amount Box -->
   <div class="amount-box">
-    Rp {{$pembayaran->kamar->harga}}
+    Rp {{number_format($pembayaran->kamar->harga, 0, ',', '.')}}
   </div>
 
   <!-- Signature -->

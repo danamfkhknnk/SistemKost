@@ -77,7 +77,7 @@
               <td class="flex px-6 gap-2 py-4">
                
                 <select id="status" name="status" class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    @if($keluhan->status == 'selesai') disabled @endif>
+                    @if($keluhan->status == 'selesai' | $keluhan->status == 'tolak') disabled @endif>
                     <option value="tolak" {{ $keluhan->status == 'tolak' ? 'selected' : '' }} >Tolak</option>
                     <option value="pending" {{ $keluhan->status == 'pending' ? 'selected' : '' }} >Pending</option>
                     <option value="selesai" {{ $keluhan->status == 'selesai' ? 'selected' : '' }} >Selesai</option>
@@ -92,7 +92,7 @@
                     <path fill-rule="evenodd" d="M19.846 4.318a2.148 2.148 0 0 0-.437-.692 2.014 2.014 0 0 0-.654-.463 1.92 1.92 0 0 0-1.544 0 2.014 2.014 0 0 0-.654.463l-.546.578 2.852 3.02.546-.579a2.14 2.14 0 0 0 .437-.692 2.244 2.244 0 0 0 0-1.635ZM17.45 8.721 14.597 5.7 9.82 10.76a.54.54 0 0 0-.137.27l-.536 2.84c-.07.37.239.696.588.622l2.682-.567a.492.492 0 0 0 .255-.145l4.778-5.06Z" clip-rule="evenodd"/>
                   </svg>
                 </button>
-                @elseif ($keluhan->status == 'selesai')
+                @elseif ($keluhan->status == 'selesai' | $keluhan->status == 'tolak'  )
                  <a href={{url('admin/keluhan/'.$keluhan->id.'/delete')}} class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                     <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                     <path fill-rule="evenodd" d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/>

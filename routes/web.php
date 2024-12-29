@@ -78,6 +78,7 @@ Route::middleware(['auth','verified'])->group(function(){
     Route::get('/admin/laporan/tambah', [LaporanController::class, 'formLaporan'])->middleware('userAkses:admin');
     Route::post('/admin/laporan/tambah', [LaporanController::class, 'tambahLaporan'])->middleware('userAkses:admin');
     Route::get('admin/laporan/pdf', [LaporanController::class, 'downloadPDF'])->name('admin.laporan.pdf');
+    Route::get('/admin/laporan/{id}/delete', [LaporanController::class, 'deleteLaporan'])->middleware('userAkses:admin');
 
     Route::get('/admin/penghuni', [PenghuniController::class, 'index'])->middleware('userAkses:admin')->name('penghuni');
     Route::get('/admin/penghuni/tambah', [PenghuniController::class, 'formPenghuni'])->middleware('userAkses:admin');

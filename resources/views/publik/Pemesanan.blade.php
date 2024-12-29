@@ -12,7 +12,7 @@
         </div>
       <div class="mt-4">
           <p class="text-lg mb-2"><strong>Nama Kamar:</strong> {{ $pembayaran->kamar->nokamar }}</p>
-          <p class="text-lg mb-2"><strong>Harga Kamar:</strong> {{ $pembayaran->kamar->harga }}</p>
+          <p class="text-lg mb-2"><strong>Harga Kamar:</strong> {{ number_format($pembayaran->kamar->harga, 0, ',', '.') }}</p>
           <p class="text-lg mb-2"><strong>Tipe Kamar:</strong> {{ $pembayaran->kamar->tipe }}</p>
           <p class="text-lg mb-2"><strong>Status Pembayaran:</strong> {{ $pembayaran->status }}</p>
           <p class="text-lg mb-2"><strong>Tanggal Pembayaran:</strong> {{ $pembayaran->created_at }}</p>

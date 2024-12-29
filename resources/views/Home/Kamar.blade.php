@@ -68,7 +68,7 @@
                     <p class="font-semibold text-sm">Lemari</p>
                     <div class="border-t-2 border-secondary/50 py-3">
                       <div class="md:flex justify-between">
-                        <p class="text-xl font-bold"> Rp.{{$kamar->harga}}/Bulan</p>
+                        <p class="text-xl font-bold"> Rp.{{number_format($kamar->harga, 0, ',', '.')}}/Bulan</p>
                         <form action="{{ route('pesanKamar', $kamar->id ) }}" method="POST">
                           @csrf
                           <input type="hidden" name="kamar_id" value="{{ $kamar->id }}">

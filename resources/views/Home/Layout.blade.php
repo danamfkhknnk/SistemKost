@@ -45,7 +45,6 @@
                                 <th scope="col" class="px-6 py-3">
                                     Waktu
                                 </th>
-    
                                 <th scope="col" class="px-6 py-3">
                                     Status
                                 </th>

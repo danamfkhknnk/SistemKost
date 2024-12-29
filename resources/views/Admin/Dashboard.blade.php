@@ -9,8 +9,8 @@
             <p class="text-md font-sm">Terisi : {{$kmrterisi}}, Tersedia : {{$kmrtersedia}}</p>
           </div>
           <div class="bg-white shadow-md rounded-lg p-2">
-            <h2 class="text-xl font-semibold">Jumlah Pembayaran</h2>
-            <p class="text-3xl font-bold text-green-600">Rp{{$jmlselesai}}</p>
+            <h2 class="text-xl font-semibold">Jumlah Keuntungan</h2>
+            <p class="text-3xl font-bold text-green-600">Rp{{$jml}}</p>
             <p class="text-md font-sm ">Dari {{$databyr}} Transaksi</p>
           </div>
           <div class="bg-white shadow-md rounded-lg p-2">
