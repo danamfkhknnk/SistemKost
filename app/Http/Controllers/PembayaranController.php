@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Session;
 class PembayaranController extends Controller
 {
     public function index(){
-        $pembayarans = pembayaran::with('user','penghuni')->orderBy('penghuni_id', 'asc')->simplePaginate(10);
+        $pembayarans = pembayaran::with('user','penghuni')->orderBy('penghuni_id', 'desc')->simplePaginate(10);
         return view('Admin.Pembayaran.Pembayaran',compact('pembayarans'));
     }
 
@@ -88,68 +88,7 @@ class PembayaranController extends Controller
         return redirect('/admin/pembayaran');
     }
 
-    public function laporanPembayaran(Request $request){
-
-        $bulanTahun = $request->input('cari');
-
-        // Mengambil total pemasukan
-        $jmlselesai = Pembayaran::where('status', 'selesai')
-        ->when($bulanTahun, function ($query) use ($bulanTahun) {
-            return $query->whereMonth('updated_at', substr($bulanTahun, 5, 2))
-                         ->whereYear('updated_at', substr($bulanTahun, 0, 4));
-        })
-        ->with('kamar') // Memuat relasi kamar
-        ->get()
-        ->sum(function ($pembayaran) {
-            return $pembayaran->kamar->harga; // Mengambil harga dari relasi kamar
-        });
-
-        // Mengambil data pembayaran berdasarkan bulan dan tahun
-        $pembayaran = Pembayaran::with('kamar')
-            ->where('status', 'selesai')
-            ->when($bulanTahun, function ($query) use ($bulanTahun) {
-                return $query->whereMonth('updated_at', substr($bulanTahun, 5, 2))
-                            ->whereYear('updated_at', substr($bulanTahun, 0, 4));
-            })
-            ->orderBy('updated_at', 'desc')
-            ->get();
-
-        return view('Admin.Laporan', compact('pembayaran', 'jmlselesai'));
-    }
-
-    public function downloadPDF(Request $request)
-    {
-        $bulanTahun = $request->input('cari');
-
-        // Mengambil data pembayaran berdasarkan bulan dan tahun
-        $pembayaran = Pembayaran::where('status', 'selesai')
-            ->when($bulanTahun, 
-            function ($query) use ($bulanTahun) {
-                return $query->whereMonth('updated_at', substr($bulanTahun, 5, 2))
-                             ->whereYear('updated_at', substr($bulanTahun, 0, 4));
-            })
-            ->orderBy('updated_at', 'desc')
-            ->get();
-
-            // Menghitung total pemasukan
-        $jmlselesai = Pembayaran::where('status', 'selesai')
-            ->when($bulanTahun, 
-            function ($query) use ($bulanTahun) {
-                return $query->whereMonth('updated_at', substr($bulanTahun, 5, 2))
-                            ->whereYear('updated_at', substr($bulanTahun, 0, 4));
-            })
-            ->with('kamar') // Memuat relasi kamar
-            ->get()
-            ->sum(function ($pembayaran) {
-                return $pembayaran->kamar->harga; // Mengambil harga dari relasi kamar
-            });
-
-        // Load view untuk PDF
-        $pdf = PDF::loadView('Admin.LaporanPdf', compact('pembayaran', 'jmlselesai','bulanTahun'));
-
-        // Download PDF
-        return $pdf->download('laporan_pembayaran.pdf');
-    }
+    
 
     public function deletePembayaran($id)
     {

@@ -23,4 +23,8 @@ class kamar extends Model
     function pembayaran(){
         return $this->hasMany(pembayaran::class);
     }
+    function laporan(){
+        return $this->hasMany(laporan::class);
+    }
 }
+    

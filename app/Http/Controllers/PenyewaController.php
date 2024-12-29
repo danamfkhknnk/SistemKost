@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\info;
+use App\Models\kamar;
 use App\Models\Keluhan;
+use App\Models\laporan;
 use App\Models\pembayaran;
 use App\Models\penghuni;
 use App\Models\profil;
@@ -75,12 +77,6 @@ class PenyewaController extends Controller
 
         $data = $request->all();
 
-        // if ($image = $request->file('foto')) {
-        //     $foto = date('YmdHis') . "." . $image->getClientOriginalExtension();
-        //     $image->move(public_path('foto'), $foto);
-        //     $data['foto'] = "$foto";
-        // }
-
         $user = User::findOrFail(Auth::id());
         $user->nama = $request->nama; // Update nama
         $user->telepon = $request->telepon; // Update nama
@@ -118,7 +114,7 @@ class PenyewaController extends Controller
     }
     
     function tagihan(){
-        $pembayaran = Pembayaran::with('kamar', 'penghuni')->where('user_id', Auth::user()->id)->get();
+        $pembayaran = Pembayaran::with('kamar', 'penghuni')->where('user_id', Auth::user()->id)->whereIn('status', ['pending','selesai'])->get();
         return view('Penyewa.Tagihan', compact('pembayaran'));
     }
 
@@ -126,6 +122,14 @@ class PenyewaController extends Controller
         $pembayaran = Pembayaran::find($request->id);
         $pembayaran->status = 'selesai';
         $pembayaran->save();
+        
+        $kamar = kamar::find($pembayaran->kamar_id);
+        laporan::create([
+            'kamar_id' => $kamar->id,
+            'tipe' => 'masuk',
+            'harga' => $kamar->harga, // Mengambil harga dari tabel kamar
+        ]);
+
         Session::flash('message', 'Pembayaran Sewa Berhasil');
         return redirect()->route('tagihan');
     }

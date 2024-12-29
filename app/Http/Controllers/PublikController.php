@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Home;
 use App\Models\info;
 use App\Models\kamar;
+use App\Models\laporan;
 use App\Models\pembayaran;
 use App\Models\penghuni;
 use App\Models\testi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class PublikController extends Controller
 {
@@ -32,6 +34,17 @@ class PublikController extends Controller
 
     public function pesanKamar(Request $request, )
     {
+        $userId = $request->user()->id; // Misalnya, jika Anda menggunakan autentikasi Laravel
+        // Cek apakah ada pembayaran dengan status 'pending' untuk pengguna ini
+        $pendingPayment = Pembayaran::where('user_id', $userId)
+            ->where('status', 'pending')
+            ->exists();
+
+        if ($pendingPayment) {
+            Session::flash('message', 'Silahkan Batalkan Terlebih Dahulu Pembayaran Pending Anda!');
+            return redirect()->route('publik');
+        }
+        
         // Validasi input
         $request->validate([
             'kamar_id' => 'required|exists:kamars,id',
@@ -117,8 +130,23 @@ class PublikController extends Controller
         $user->role = 'penyewa';
         $user->save();
 
+        laporan::create([
+            'kamar_id' => $kamar->id,
+            'tipe' => 'masuk',
+            'harga' => $kamar->harga, // Mengambil harga dari tabel kamar
+        ]);
+
         return view('Penyewa.Dashboard', compact('user_nama'));
     }
     
+    public function cancel($id){
+
+        $pembayaran = pembayaran::find($id);
+
+        $pembayaran->status = 'batal';
+        $pembayaran->save();
+        
+        return redirect()->route('publik');
+    }
 
 }

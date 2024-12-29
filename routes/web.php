@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\PenghuniController;
 use App\Http\Controllers\KeluhanController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PenyewaController;
 use App\Http\Controllers\PublikController;
@@ -47,6 +48,7 @@ Route::middleware(['auth','verified'])->group(function(){
     Route::get('/publik', [PublikController::class, 'publik'])->middleware('userAkses:publik')->name('publik');
     Route::post('/publik/booking/{id}', [PublikController::class, 'pesanKamar'])->middleware('userAkses:publik')->name('pesanKamar');
     Route::get('/publik/booking/{id}', [PublikController::class, 'konfirmasi'])->middleware('userAkses:publik')->name('konfirmasi');
+    Route::patch('/publik/booking/{id}/cancel', [PublikController::class, 'cancel'])->middleware('userAkses:publik')->name('cancel');
     Route::post('/publik/booking/success/{id}', [PublikController::class, 'berhasil'])->middleware('userAkses:publik')->name('berhasil');
 
     Route::get('/admin/pengguna', [AdminController::class, 'index'])->middleware('userAkses:admin')->name('pengguna');
@@ -72,8 +74,10 @@ Route::middleware(['auth','verified'])->group(function(){
     Route::post('/admin/pembayaran/tambah', [PembayaranController::class, 'tambahPembayaran'])->middleware('userAkses:admin');
     Route::get('/admin/pembayaran/{id}/delete', [PembayaranController::class, 'deletePembayaran'])->middleware('userAkses:admin');
 
-    Route::get('/admin/laporan', [PembayaranController::class, 'laporanPembayaran'])->middleware('userAkses:admin');
-    Route::get('admin/laporan/pdf', [PembayaranController::class, 'downloadPDF'])->name('admin.laporan.pdf');
+    Route::get('/admin/laporan', [LaporanController::class, 'laporanPembayaran'])->middleware('userAkses:admin')->name('laporan');
+    Route::get('/admin/laporan/tambah', [LaporanController::class, 'formLaporan'])->middleware('userAkses:admin');
+    Route::post('/admin/laporan/tambah', [LaporanController::class, 'tambahLaporan'])->middleware('userAkses:admin');
+    Route::get('admin/laporan/pdf', [LaporanController::class, 'downloadPDF'])->name('admin.laporan.pdf');
 
     Route::get('/admin/penghuni', [PenghuniController::class, 'index'])->middleware('userAkses:admin')->name('penghuni');
     Route::get('/admin/penghuni/tambah', [PenghuniController::class, 'formPenghuni'])->middleware('userAkses:admin');

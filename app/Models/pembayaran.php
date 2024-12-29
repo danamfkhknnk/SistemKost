@@ -32,4 +32,5 @@ class pembayaran extends Model
     {
         return $this->belongsTo(kamar::class);
     }
+    
 }
