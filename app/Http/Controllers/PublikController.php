@@ -16,17 +16,13 @@ use Illuminate\Support\Facades\Session;
 
 class PublikController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {  
         return view('Home.Layout');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function publik()
     {
         return view('Home.Layout');
@@ -108,32 +104,58 @@ class PublikController extends Controller
         $pembayaran = Pembayaran::find($request->id);
         $pembayaran->status = 'selesai';
         $pembayaran->save();
+        
+        $existingPayments = Pembayaran::where('kamar_id', $pembayaran->kamar_id)
+        ->where('status', 'pending')
+        ->where('tipe','baru')
+        ->get();
+    
+        // Jika ada pembayaran lain yang sukses, ubah statusnya menjadi 'batal'
+        foreach ($existingPayments as $existingPayment) {
+            $existingPayment->status = 'batal';
+            $existingPayment->snap_token = null;
+            $existingPayment->save();
+        }
 
-        $penghuni = penghuni::create([
-            'user_id' => $pembayaran->user_id,
-            'kamar_id' => $pembayaran->kamar_id,
-            'tgglmasuk' => $pembayaran->updated_at,
-        ]);
+        $penghuni = penghuni::where('user_id', $pembayaran->user_id)->first();
+        
+        if ($penghuni) {
+            $penghuni->kamar_id = $pembayaran->kamar_id;
+            $penghuni->tgglmasuk = $pembayaran->updated_at;
+            $penghuni->tgglkeluar = null;
+            $penghuni->save();
 
+        } else{
+            $penghuni = penghuni::create([
+                'user_id' => $pembayaran->user_id,
+                'kamar_id' => $pembayaran->kamar_id,
+                'tgglmasuk' => $pembayaran->updated_at,
+            ]);
+        }
+        
         $pembayaran->penghuni_id = $penghuni->id;
         $pembayaran->save();
-
-        testi::create([
-            'user_id' => $pembayaran->user_id,
-        ]);
-
+        
+        $testi = testi::where('user_id', $pembayaran->user_id)->first();
+        
+        if (!$testi) {
+            testi::create([
+                'user_id' => $pembayaran->user_id,
+            ]);
+        }
+        
         $kamar = kamar::find($pembayaran->kamar_id);
         $kamar->status = 'terisi';
         $kamar->save();
-
+        
         $user = User::find($pembayaran->user_id);
         $user->role = 'penyewa';
         $user->save();
-
+        
         laporan::create([
             'kamar_id' => $kamar->id,
             'tipe' => 'masuk',
-            'harga' => $kamar->harga, // Mengambil harga dari tabel kamar
+            'harga' => $kamar->harga,
         ]);
 
         return view('Penyewa.Dashboard', compact('user_nama'));

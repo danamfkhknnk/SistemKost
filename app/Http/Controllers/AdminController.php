@@ -29,7 +29,7 @@ class AdminController extends Controller
         ->sum('harga');
 
         $jml = $jmlmasuk - $jmlkeluar;
-
+       
         $databyr = laporan::count();
         $jmlakun = User::whereIn('role', [User ::ROLE_PENYEWA, User::ROLE_PUBLIK])->count();
         $penghuni = User::whereIn('role', [User ::ROLE_PENYEWA])->count();
@@ -38,8 +38,9 @@ class AdminController extends Controller
         $dtkeluhan = Keluhan::count();
         $klhnselesai = Keluhan::where('status','selesai')->count();
         $klhnpending = Keluhan::where('status','pending')->count();
-        $pembayaran = pembayaran::with('user')->where('status','pending')->get();
-        return view ('Admin.Dashboard', compact('jml','dtpenghuni','pembayaran','jmlakun','penghuni','jmlkamar','kmrterisi','kmrtersedia','databyr','dtuser','dtkeluhan','klhnselesai','klhnpending'));
+        $tgl = penghuni::with('user')->whereNull('tgglkeluar')->get();
+
+        return view ('Admin.Dashboard', compact('jml','dtpenghuni','tgl','jmlakun','penghuni','jmlkamar','kmrterisi','kmrtersedia','databyr','dtuser','dtkeluhan','klhnselesai','klhnpending'));
     }
     function index (){
 
