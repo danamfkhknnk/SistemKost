@@ -16,6 +16,7 @@ class pembayaran extends Model
         'tipe',
         'snap_token',
         'jatuhtempo',
+        'tanggal',
     ];
 
     function user(): BelongsTo

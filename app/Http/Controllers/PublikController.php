@@ -46,6 +46,7 @@ class PublikController extends Controller
             'kamar_id' => 'required|exists:kamars,id',
             'user_id' => 'required|exists:users,id',
             'tipe' => 'required|in:baru,sewa',
+            'tanggal' => 'required|date|after_or_equal:today|before_or_equal:' . now()->addDays(7)->toDateString(),
         ]);
 
         // Membuat entri baru di tabel pembayaran
@@ -55,6 +56,8 @@ class PublikController extends Controller
             'penghuni_id' => null, // Atur sesuai kebutuhan
             'status' => 'pending',
             'tipe' => $request->tipe,
+            'tanggal' => $request->tanggal,
+
         ]);
 
         // Set your Merchant Server Key
@@ -121,7 +124,7 @@ class PublikController extends Controller
         
         if ($penghuni) {
             $penghuni->kamar_id = $pembayaran->kamar_id;
-            $penghuni->tgglmasuk = $pembayaran->updated_at;
+            $penghuni->tgglmasuk = $pembayaran->tanggal;
             $penghuni->tgglkeluar = null;
             $penghuni->save();
 
@@ -129,7 +132,7 @@ class PublikController extends Controller
             $penghuni = penghuni::create([
                 'user_id' => $pembayaran->user_id,
                 'kamar_id' => $pembayaran->kamar_id,
-                'tgglmasuk' => $pembayaran->updated_at,
+                'tgglmasuk' => $pembayaran->tanggal,
             ]);
         }
         

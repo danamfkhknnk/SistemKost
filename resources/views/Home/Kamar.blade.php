@@ -5,6 +5,17 @@
         <p class="pt-2 text-center text-sm">
           Nikmati kenyamanan tinggal di Kost Putra Tentrem Mulyo dengan fasilitas lengkap dan harga terjangkau. Tersedia pilihan kamar standar dan eksklusif yang siap mendukung kebutuhan Anda. Hubungi kami sekarang untuk informasi lebih lanjut dan reservasi!
         </p>
+        @error('tanggal')
+                                    <div class="flex items-center p-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                                      <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                                      </svg>
+                                      <span class="sr-only">Info</span>
+                                      <div>
+                                        <span class="font-medium">{{$message}}</span>
+                                      </div>
+                                    </div>
+                              @enderror
       </div>
       @if ($kamar)
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
@@ -66,20 +77,36 @@
                     <p class="font-semibold text-sm">Dapur Umum</p>
                     <p class="font-semibold text-sm">Kasur</p>
                     <p class="font-semibold text-sm">Lemari</p>
+                    <form action="{{ route('pesanKamar', $kamar->id ) }}" method="POST">
+                    <div>
+                      <input type="date" value="{{ old('tanggal') }}" name="tanggal" id="tanggal" class="block p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >  
+                      <div class="flex items-center p-1 text-sm text-blue-800 rounded-lg  dark:bg-gray-800 dark:text-red-400" role="alert">
+                        <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                        </svg>
+                        <span class="sr-only">Info</span>
+                        <div>
+                          <span class="font-sm">Pilih Tanggal Akan Menempati, Maksimal 7 hari</span>
+                        </div>
+                      </div>
+                    </div>
                     <div class="border-t-2 border-secondary/50 py-3">
                       <div class="md:flex justify-between">
                         <p class="text-xl font-bold"> Rp.{{number_format($kamar->harga, 0, ',', '.')}}/Bulan</p>
-                        <form action="{{ route('pesanKamar', $kamar->id ) }}" method="POST">
+                       
                           @csrf
                           <input type="hidden" name="kamar_id" value="{{ $kamar->id }}">
                           <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-                          <input type="hidden" name="tipe" value="baru"> <!-- Atau sesuaikan dengan logika Anda -->
+                          <input type="hidden" name="tipe" value="baru">
+                         
                           <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
                               Pesan Sekarang
                           </button>
-                      </form>
+                     
+                     
                       </div>
                     </div>
+                  </form>
                   </div>                  
                 </div>
             </div>

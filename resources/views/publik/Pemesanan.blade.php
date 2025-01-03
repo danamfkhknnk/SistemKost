@@ -15,7 +15,7 @@
           <p class="text-lg mb-2"><strong>Harga Kamar:</strong> {{ number_format($pembayaran->kamar->harga, 0, ',', '.') }}</p>
           <p class="text-lg mb-2"><strong>Tipe Kamar:</strong> {{ $pembayaran->kamar->tipe }}</p>
           <p class="text-lg mb-2"><strong>Status Pembayaran:</strong> {{ $pembayaran->status }}</p>
-          <p class="text-lg mb-2"><strong>Tanggal Pembayaran:</strong> {{ $pembayaran->created_at }}</p>
+          <p class="text-lg mb-2"><strong>Tanggal Menempati:</strong> {{ $pembayaran->tanggal }}</p>
       </div>
       <div class="flex mt-3 justify-between">
         <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700" id="pay-button">
@@ -72,7 +72,7 @@
           <p class="text-lg mb-2"><strong>Harga Kamar:</strong> {{ $pembayaran->kamar->harga }}</p>
           <p class="text-lg mb-2"><strong>Tipe Kamar:</strong> {{ $pembayaran->kamar->tipe }}</p>
           <p class="text-lg mb-2"><strong>Status Pembayaran:</strong> {{ $pembayaran->status }}</p>
-          <p class="text-lg mb-2"><strong>Tanggal Pembayaran:</strong> {{ $pembayaran->created_at }}</p>
+          <p class="text-lg mb-2"><strong>Tanggal Menempati:</strong> {{ $pembayaran->created_at }}</p>
       </div>
       <div class="flex mt-3 justify-between">
         <a type="button" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700" href="{{url('/publik')}}">
