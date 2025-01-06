@@ -82,7 +82,7 @@ class PembayaranController extends Controller
         // Simpan snap_token ke dalam entri pembayaran
         $pembayaran->snap_token = $snapToken;
         $pembayaran->updated_at = null;
-        $pembayaran->save();
+        $pembayaran->save();`
 
         Session::flash('message','Tambah Data Berhasil');
         return redirect('/admin/pembayaran');

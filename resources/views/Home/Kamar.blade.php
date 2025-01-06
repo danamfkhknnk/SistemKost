@@ -61,39 +61,66 @@
                   </div>
                   <!-- Modal body -->
                   <div class="p-3">
-                    <div class="grid grid-cols-2  gap-2">
+                    <div class="grid grid-cols-3  gap-2">
                       @foreach (explode(',', $kamar->gambarkamar) as $image)
-                        <img src="{{ asset('gambarkamar/' . $image) }}" alt="Gambar kamar" height="150px" class="rounded-md">
+                        <img src="{{ asset('gambarkamar/' . $image) }}" alt="Gambar kamar"  class=" rounded-md">
                       @endforeach
                     </div>
-                    <h2 class="font-bold text-xl">Fasilitas Kamar</h2>                    
-                    <p class="font-semibold text-sm">{{$kamar->tipe}}</p>
-                    <p class="font-semibold text-sm">Wifi</p>
-                    <p class="font-semibold text-sm">Listrik</p>
-                    <p class="font-semibold text-sm">Air</p>
-                    <p class="font-semibold text-sm">CCTV</p>
-                    <p class="font-semibold text-sm">Sprei Baru Setiap Bulan</p>
-                    <p class="font-semibold text-sm">Akses 24 Jam</p>
-                    <p class="font-semibold text-sm">Dapur Umum</p>
-                    <p class="font-semibold text-sm">Kasur</p>
-                    <p class="font-semibold text-sm">Lemari</p>
-                    <form action="{{ route('pesanKamar', $kamar->id ) }}" method="POST">
-                    <div>
-                      <input type="date" value="{{ old('tanggal') }}" name="tanggal" id="tanggal" class="block p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >  
-                      <div class="flex items-center p-1 text-sm text-blue-800 rounded-lg  dark:bg-gray-800 dark:text-red-400" role="alert">
-                        <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-                        </svg>
-                        <span class="sr-only">Info</span>
-                        <div>
-                          <span class="font-sm">Pilih Tanggal Akan Menempati, Maksimal 7 hari</span>
-                        </div>
+          
+                    <h2 class="font-bold text-xl">Fasilitas Kamar</h2>  
+                    <div class="flex flex-col-4 gap-2 justify-between">
+                      <div>
+                        <p class="font-semibold text-sm">{{$kamar->tipe}}</p>
+                        <p class="font-semibold text-sm">Wifi</p>
+                        <p class="font-semibold text-sm">Dapur Umum</p>
+                        
+                      </div>
+                      <div>
+                        <p class="font-semibold text-sm">Sprei Baru Setiap Bulan</p>
+                        <p class="font-semibold text-sm">Akses 24 Jam</p>
+                        <p class="font-semibold text-sm">Kasur</p>
+                       
+                      </div>
+                      <div>
+                        <p class="font-semibold text-sm">Air</p>
+                        <p class="font-semibold text-sm">CCTV</p>
+                       
+                       
+                      </div>
+                      <div>
+                        <p class="font-semibold text-sm">Listrik</p>
+                        <p class="font-semibold text-sm">Lemari</p>
                       </div>
                     </div>
+                    <form action="{{ route('pesanKamar', $kamar->id ) }}" method="POST">
+                      <div class="flex justify-between">
+                        <div>
+                          <label for="tanggal" class="block mt-2 mb-2 text-xl font-bold text-gray-900 dark:text-white">Tanggal Menempati</label>
+                          <input type="date" value="{{ old('tanggal') }}" name="tanggal" id="tanggal" class="block p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >  
+                        </div>
+                        <div class="pt-4">
+                          <button data-tooltip-target="tooltip-right" data-tooltip-placement="right" type="button" class=" text-white bg-red-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-1 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            <div>
+                              <span class="font-sm uppercase">Kentuan</span>
+                            </div>
+                        </button>
+                          <div id="tooltip-right" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-700 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                            <div class="flex flex-col">
+                              <p class="font-sm uppercase">Pembayaran Yang Telah Dilakukan Tidak Dapat Dikembalikan.</p> 
+                              <p class="font-sm uppercase">Wajib Mematuhi Peraturan Yang Ada.</p> 
+                              <p class="font-sm uppercase">Menindak Segala Bentuk Kriminalitas.</p> 
+                              <p class="font-sm uppercase">Sewa Berlaku pada tanggal menempati dipilih.</p>
+                            </div>
+                            <div class="tooltip-arrow" data-popper-arrow>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                    
                     <div class="border-t-2 border-secondary/50 py-3">
                       <div class="md:flex justify-between">
                         <p class="text-xl font-bold"> Rp.{{number_format($kamar->harga, 0, ',', '.')}}/Bulan</p>
-                       
+                    
                           @csrf
                           <input type="hidden" name="kamar_id" value="{{ $kamar->id }}">
                           <input type="hidden" name="user_id" value="{{ Auth::id() }}">

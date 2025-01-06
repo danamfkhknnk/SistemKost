@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Session;
 class PenghuniController extends Controller
 {
     function index(){
-        $penghunis = penghuni::with('user','kamar')->orderBy('id', 'desc')->simplePaginate(10);
+        $penghunis = penghuni::with('user','kamar')->orderBy('updated_at', 'desc')->simplePaginate(10);
         return view('Admin.Penghuni.Penghuni', compact('penghunis'));
     }
     function formPenghuni(){
