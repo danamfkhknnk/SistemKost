@@ -14,8 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-class PublikController extends Controller
-{
+class PublikController extends Controller {
 
     public function index()
     {  
@@ -173,5 +172,4 @@ class PublikController extends Controller
         
         return redirect()->route('publik');
     }
-
 }

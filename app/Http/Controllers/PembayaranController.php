@@ -9,19 +9,21 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-class PembayaranController extends Controller
-{
+
+class PembayaranController extends Controller {
+
     public function index(){
         $pembayarans = pembayaran::with('user','penghuni')->orderBy('penghuni_id', 'desc')->simplePaginate(10);
         return view('Admin.Pembayaran.Pembayaran',compact('pembayarans'));
     }
 
     public function formPembayaran()
-{
+    {
     $penghuni = penghuni::with('user','pembayaran')->whereNotNull('kamar_id')->get();
     return view('Admin.Pembayaran.add', compact('penghuni'));
-}
-    public function tambahPembayaran(Request $request){
+    }
+
+    public function tambahPembayaran(Request $request) {
 
         $request->validate([
             'jatuhtempo' => 'required|date|after:' . Carbon::parse(Penghuni::find($request->penghuni_id)->tgglmasuk)->toDateString(),
@@ -82,16 +84,14 @@ class PembayaranController extends Controller
         // Simpan snap_token ke dalam entri pembayaran
         $pembayaran->snap_token = $snapToken;
         $pembayaran->updated_at = null;
-        $pembayaran->save();`
+        $pembayaran->save();
 
         Session::flash('message','Tambah Data Berhasil');
         return redirect('/admin/pembayaran');
     }
 
-    
 
-    public function deletePembayaran($id)
-    {
+    public function deletePembayaran($id) {
         $pembayaran = pembayaran::findOrFail($id);
 
         $pembayaran->delete();
