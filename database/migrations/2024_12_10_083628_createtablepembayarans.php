@@ -19,6 +19,8 @@ return new class extends Migration
             $table->enum('status',['pending','selesai','batal']);
             $table->enum('tipe',['baru','sewa'])->nullable();
             $table->string('snap_token')->nullable();
+            $table->date('jatuhtempo')->nullable();
+            $table->date('tanggal')->nullable();
             $table->timestamps();
         });
     }

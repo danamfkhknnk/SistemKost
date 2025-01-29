@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('tentangs', function (Blueprint $table) {
             $table->id(); // Kolom ID otomatis
-            $table->foreignId('user_id')->constrained();
             $table->string('poin', 255)->nullable();
             $table->string('desk', 255)->nullable();
             

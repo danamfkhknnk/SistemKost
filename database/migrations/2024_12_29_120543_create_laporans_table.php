@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('laporans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('kamar_id')->constrained();
-            $table->string('item',100);
+            $table->foreignId('kamar_id')->constrained()->nullable();
+            $table->string('item',100)->nullable();
             $table->enum('tipe', ['Keluar', 'Masuk']);
             $table->string('harga',12);
             $table->timestamps();

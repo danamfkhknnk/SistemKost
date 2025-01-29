@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('tt', 255)->nullable();
             $table->string('logo')->nullable(); // Lokasi gambar KTP
             $table->string('galeri')->nullable(); // Lokasi gambar KTP
-            
+            $table->string('alamat')->nullable();
             $table->timestamps();
         });
     }

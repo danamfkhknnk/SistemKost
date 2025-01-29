@@ -20,8 +20,6 @@ return new class extends Migration
             $table->foreignId('kamar_id')->constrained();
             $table->date('tgglmasuk')->nullable();
             $table->date('tgglkeluar')->nullable();
-            $table->string('gambarktp')->nullable(); // Lokasi gambar KTP
-            
             $table->timestamps();
         });
     }
