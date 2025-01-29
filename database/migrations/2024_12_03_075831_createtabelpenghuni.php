@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nik', 20)->unique()->nullable();
             $table->string('telepon', 15)->nullable();
             $table->text('alamat')->nullable();
-            $table->foreignId('kamar_id')->constrained();
+            $table->foreignId('kamar_id')->constrained()->nullable();
             $table->date('tgglmasuk')->nullable();
             $table->date('tgglkeluar')->nullable();
             $table->timestamps();
