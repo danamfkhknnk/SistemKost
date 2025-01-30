@@ -52,7 +52,7 @@ class PublikController extends Controller {
         $pembayaran = Pembayaran::create([
             'user_id' => $request->user_id,
             'kamar_id' => $request->kamar_id,
-            'penghuni_id' => null, // Atur sesuai kebutuhan
+          
             'status' => 'pending',
             'tipe' => $request->tipe,
             'tanggal' => $request->tanggal,
