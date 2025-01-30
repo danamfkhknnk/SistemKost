@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\info;
 use App\Models\kamar;
-use App\Models\Keluhan;
+use App\Models\keluhan;
 use App\Models\laporan;
 use App\Models\pembayaran;
 use App\Models\penghuni;

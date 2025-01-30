@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Keluhan;
+use App\Models\keluhan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
