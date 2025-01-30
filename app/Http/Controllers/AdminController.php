@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\kamar;
-use App\Models\Keluhan;
+use App\Models\keluhan;
 use App\Models\laporan;
 use App\Models\pembayaran;
 use App\Models\penghuni;
@@ -35,9 +35,9 @@ class AdminController extends Controller
         $penghuni = User::whereIn('role', [User ::ROLE_PENYEWA])->count();
         $dtpenghuni = User::whereIn('role', [User ::ROLE_PENYEWA])->get();
         $dtuser = User::count();
-        $dtkeluhan = Keluhan::count();
-        $klhnselesai = Keluhan::where('status','selesai')->count();
-        $klhnpending = Keluhan::where('status','pending')->count();
+        $dtkeluhan = keluhan::count();
+        $klhnselesai = keluhan::where('status','selesai')->count();
+        $klhnpending = keluhan::where('status','pending')->count();
         $tgl = penghuni::with('user')->whereNull('tgglkeluar')->get();
 
         return view ('Admin.Dashboard', compact('jml','dtpenghuni','tgl','jmlakun','penghuni','jmlkamar','kmrterisi','kmrtersedia','databyr','dtuser','dtkeluhan','klhnselesai','klhnpending'));
