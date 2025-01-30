@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('pembayarans', function (Blueprint $table) {
             $table->id(); // Kolom ID otomatis
-            $table->foreignId('user_id')->constrained()->nullable();
-            $table->foreignId('kamar_id')->constrained()->nullable();
-            $table->foreignId('penghuni_id')->constrained()->nullable();
+            $table->foreignId('user_id')->nullable()->constrained();
+            $table->foreignId('kamar_id')->nullable()->constrained();
+            $table->foreignId('penghuni_id')->nullable()->constrained();
             $table->enum('status',['pending','selesai','batal']);
             $table->enum('tipe',['baru','sewa'])->nullable();
             $table->string('snap_token')->nullable();
